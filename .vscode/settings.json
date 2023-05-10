@@ -1,4 +1,10 @@
 {
     "cmake.configureOnOpen": false,
-    "todo-tree.tree.showBadges": false
+    "todo-tree.tree.showBadges": false,
+    "files.autoSave": "onWindowChange",
+    "editor.fontSize": 16,
+    "editor.wordWrap": "wordWrapColumn",
+    "dart.flutterRunAdditionalArgs": [
+        "--no-sound-null-safety"
+    ]
 }

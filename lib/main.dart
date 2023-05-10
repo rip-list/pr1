@@ -5,6 +5,15 @@ import 'common/widgets/widget_home.dart';
 void main() {
   runApp(const MyApp());
 }
+
+
+
+
+
+
+
+
+
 /*
 TODO блять 
 думай как исправить кнопки - придумал
