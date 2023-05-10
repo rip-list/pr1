@@ -29,7 +29,7 @@ environment:
 # versions available, run `flutter pub outdated`.
 dependencies:
   # sizer_mod: ^0.0.1
-  sizer: ^1.1.7 
+  # sizer: ^1.1.7 
   flutter_web_plugins:
     sdk: flutter
      

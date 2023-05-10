@@ -120,14 +120,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.8.2"
-  sizer:
-    dependency: "direct main"
-    description:
-      name: sizer
-      sha256: "09134fc6aac0e3742727ca4747eac9c25b3400f57204d6d2d783f809c93ba216"
-      url: "https://pub.dev"
-    source: hosted
-    version: "1.1.8"
   sky_engine:
     dependency: transitive
     description: flutter
@@ -191,4 +183,3 @@ packages:
     version: "2.1.4"
 sdks:
   dart: ">=2.19.6 <3.0.0"
-  flutter: ">=1.17.0"

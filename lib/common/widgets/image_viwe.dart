@@ -6,10 +6,11 @@ import 'package:pr1/common/constants/app_colors.dart';
 
 class CusImage extends StatefulWidget {
   final String url;
-
+  final double radius;
   const CusImage({
     super.key,
     required this.url,
+    this.radius = 30.0,
   });
 
   @override
@@ -18,26 +19,31 @@ class CusImage extends StatefulWidget {
 
 class _CusImageState extends State<CusImage> {
   late String url;
-
+  late double radius;
   @override
   void initState() {
     super.initState();
-    url = "";
+    url = "https://ibb.co/P5F67Yg";
+    radius = 30.0;
   }
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: 200,
-      height: 200,
-      decoration: BoxDecoration(
-        boxShadow: List.empty(growable: true),
-        gradient: const LinearGradient(
-            end: Alignment.topRight,
-            begin: Alignment.bottomLeft,
-            colors: [AppColors.blue, AppColors.violet]),
+    return AlertDialog(
+      backgroundColor: AppColors.secondary,
+      content: Container(
+        width: 200,
+        height: 200,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadiusDirectional.circular(radius),
+          boxShadow: List.empty(growable: true),
+          gradient: const LinearGradient(
+              end: Alignment.topRight,
+              begin: Alignment.bottomLeft,
+              colors: [AppColors.blue, AppColors.violet]),
+        ),
+        child: Image.network(url),
       ),
-      child: Image.network(url),
     );
   }
 }
