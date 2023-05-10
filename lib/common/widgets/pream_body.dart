@@ -30,6 +30,7 @@ class PreamBodyState extends State<PreamBody> {
       fit: BoxFit.scaleDown,
       child: Column(
         children: [
+          // первый ряд
           Row(
             children: const [
               CusImage(
@@ -48,6 +49,7 @@ class PreamBodyState extends State<PreamBody> {
               ),
             ],
           ),
+          // второй ряд
           Row(
             children: const [
               CusImage(
@@ -64,6 +66,7 @@ class PreamBodyState extends State<PreamBody> {
               ),
             ],
           ),
+          // третий ряд
           Row(
             children: const [
               CusImage(
