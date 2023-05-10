@@ -158,7 +158,7 @@ class MyWidgetState extends State<CustomButton> {
           },
           icon: iconbar,
           focusColor: AppColors.secondary,
-          iconSize: 40,
+          iconSize: 50,
           mouseCursor: MaterialStateMouseCursor.clickable,
         ),
         Text(

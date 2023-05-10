@@ -33,26 +33,17 @@ class PreamBodyState extends State<PreamBody> {
           Row(
             children: const [
               CusImage(
+                //  первый блок
                 url:
                     "https://cdn.icon-icons.com/icons2/2389/PNG/256/github_logo_icon_145252.png",
               ),
               CusImage(
-                url: "https://ibb.co/P5F67Yg",
+                // второй блок
+                url:
+                    "https://cdn.icon-icons.com/icons2/3956/PNG/512/caffeine_coffee_cup_beverage_drink_cafe_icon_252287.png",
               ),
               CusImage(
-                url: "https://ibb.co/P5F67Yg",
-              ),
-            ],
-          ),
-          Row(
-            children: const [
-              CusImage(
-                url: "https://ibb.co/P5F67Yg",
-              ),
-              CusImage(
-                url: "https://ibb.co/P5F67Yg",
-              ),
-              CusImage(
+                // третий блок
                 url: "https://ibb.co/P5F67Yg",
               ),
             ],
@@ -60,12 +51,31 @@ class PreamBodyState extends State<PreamBody> {
           Row(
             children: const [
               CusImage(
+                // четвёртый блок
                 url: "https://ibb.co/P5F67Yg",
               ),
               CusImage(
+                // пятый блок
                 url: "https://ibb.co/P5F67Yg",
               ),
               CusImage(
+                // шестой блок
+                url: "https://ibb.co/P5F67Yg",
+              ),
+            ],
+          ),
+          Row(
+            children: const [
+              CusImage(
+                // седбмой блок
+                url: "https://ibb.co/P5F67Yg",
+              ),
+              CusImage(
+                // восьмой блок
+                url: "https://ibb.co/P5F67Yg",
+              ),
+              CusImage(
+                // девятый блок
                 url: "https://ibb.co/P5F67Yg",
               ),
             ],
