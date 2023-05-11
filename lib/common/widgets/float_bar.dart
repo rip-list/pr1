@@ -163,7 +163,8 @@ class MyWidgetState extends State<CustomButton> {
         ),
         Text(
           textButton,
-          style: const TextStyle(fontSize: 40, color: AppColors.violet),
+          style: const TextStyle(
+              fontSize: 40, fontFamily: 'Sensal', color: AppColors.violet),
         ),
         const Expanded(
           flex: 5,

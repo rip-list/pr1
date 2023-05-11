@@ -34,7 +34,7 @@ class _CusImageState extends State<CusImage> {
   @override
   void initState() {
     super.initState();
-    url = "assets/img/github.png";
+    url = url;
     radius = 30.0;
     text = "text";
   }

@@ -39,11 +39,11 @@ class PreamBodyState extends State<PreamBody> {
               ),
               CusImage(
                 // второй блок
-                url: "assets/img/github.png",
+                url: "assets/img/wallet.png",
               ),
               CusImage(
                 // третий блок
-                url: "assets/img/github.png",
+                url: "assets/img/discord.png",
               ),
             ],
           ),
