@@ -50,6 +50,7 @@ class _CusImageState extends State<CusImage> {
       title: Text(
         text,
         textAlign: TextAlign.center,
+        style: const TextStyle(fontFamily: "Aref"),
       ),
       backgroundColor: AppColors.secondary,
       content: Container(

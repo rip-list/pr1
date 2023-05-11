@@ -11,9 +11,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Home',
-      theme: ThemeData(
-        primaryColor: AppColors.violet,
-      ),
+      theme: ThemeData(primaryColor: AppColors.violet, fontFamily: "Aref"),
       home: const FloatBar(),
     );
   }

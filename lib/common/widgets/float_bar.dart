@@ -148,23 +148,33 @@ class MyWidgetState extends State<CustomButton> {
   Widget build(BuildContext context) {
     return Row(
       children: <Widget>[
-        IconButton(
-          style: const ButtonStyle(
-            foregroundColor: MaterialStatePropertyAll(AppColors.white),
-            backgroundColor: MaterialStatePropertyAll(AppColors.blue),
+        Container(
+          width: 300,
+          height: 45,
+          decoration: const BoxDecoration(
+            color: AppColors.transparentpol,
+            borderRadius: BorderRadius.all(
+              Radius.circular(34),
+            ),
           ),
-          onPressed: () {
-            setState(() => click());
-          },
-          icon: iconbar,
-          focusColor: AppColors.secondary,
-          iconSize: 50,
-          mouseCursor: MaterialStateMouseCursor.clickable,
+          child: IconButton(
+            style: const ButtonStyle(
+              foregroundColor: MaterialStatePropertyAll(AppColors.white),
+              backgroundColor: MaterialStatePropertyAll(AppColors.blue),
+            ),
+            onPressed: () {
+              setState(() => click());
+            },
+            icon: iconbar,
+            focusColor: AppColors.secondary,
+            iconSize: 50,
+            mouseCursor: MaterialStateMouseCursor.clickable,
+          ),
         ),
         Text(
           textButton,
           style: const TextStyle(
-              fontSize: 40, fontFamily: 'Sensal', color: AppColors.violet),
+              fontSize: 33, fontFamily: "Sensal", color: AppColors.violet),
         ),
         const Expanded(
           flex: 5,
