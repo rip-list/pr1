@@ -33,7 +33,7 @@ class FloatBar extends StatelessWidget {
               delegate: SliverChildBuilderDelegate(
                 (BuildContext context, int index) =>
                     // ignore: prefer_const_constructors
-                    Center(child: PreamBody()),
+                    PreamBody(),
                 childCount: 1,
               ),
             )
