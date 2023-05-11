@@ -55,6 +55,9 @@ class _CusImageState extends State<CusImage> {
       content: Container(
         width: 200,
         height: 200,
+
+        // внешний вид блоков с информацией
+        // TODO надо поменять на кнопку  мб
         decoration: BoxDecoration(
           borderRadius: BorderRadiusDirectional.circular(radius),
           boxShadow: List.empty(growable: true),
@@ -64,7 +67,9 @@ class _CusImageState extends State<CusImage> {
             colors: [AppColors.blue, AppColors.violet],
           ),
         ),
-        child: Image.asset(url),
+        child: Image(
+          image: AssetImage(url),
+        ),
       ),
     );
   }
