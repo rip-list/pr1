@@ -35,17 +35,15 @@ class PreamBodyState extends State<PreamBody> {
             children: const [
               CusImage(
                 //  первый блок
-                url:
-                    "https://cdn.icon-icons.com/icons2/2389/PNG/256/github_logo_icon_145252.png",
+                url: "assets/img/github.png",
               ),
               CusImage(
                 // второй блок
-                url:
-                    "https://cdn.icon-icons.com/icons2/3956/PNG/512/caffeine_coffee_cup_beverage_drink_cafe_icon_252287.png",
+                url: "assets/img/github.png",
               ),
               CusImage(
                 // третий блок
-                url: "https://ibb.co/P5F67Yg",
+                url: "assets/img/github.png",
               ),
             ],
           ),
@@ -54,15 +52,15 @@ class PreamBodyState extends State<PreamBody> {
             children: const [
               CusImage(
                 // четвёртый блок
-                url: "https://ibb.co/P5F67Yg",
+                url: "assets/img/github.png",
               ),
               CusImage(
                 // пятый блок
-                url: "https://ibb.co/P5F67Yg",
+                url: "assets/img/github.png",
               ),
               CusImage(
                 // шестой блок
-                url: "https://ibb.co/P5F67Yg",
+                url: "assets/img/github.png",
               ),
             ],
           ),
@@ -71,15 +69,15 @@ class PreamBodyState extends State<PreamBody> {
             children: const [
               CusImage(
                 // седбмой блок
-                url: "https://ibb.co/P5F67Yg",
+                url: "assets/img/github.png",
               ),
               CusImage(
                 // восьмой блок
-                url: "https://ibb.co/P5F67Yg",
+                url: "assets/img/github.png",
               ),
               CusImage(
                 // девятый блок
-                url: "https://ibb.co/P5F67Yg",
+                url: "assets/img/github.png",
               ),
             ],
           ),

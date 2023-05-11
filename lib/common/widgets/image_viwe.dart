@@ -2,6 +2,7 @@
 // ignore: unused_import, depend_on_referenced_packages
 import 'dart:html';
 
+// ignore: depend_on_referenced_packages
 import 'package:flutter/material.dart';
 // ignore: unused_import
 import 'package:pr1/common/constants/app_colors.dart';
@@ -33,8 +34,7 @@ class _CusImageState extends State<CusImage> {
   @override
   void initState() {
     super.initState();
-    url =
-        "https://cdn.icon-icons.com/icons2/2389/PNG/256/github_logo_icon_145252.png";
+    url = "assets/img/github.png";
     radius = 30.0;
     text = "text";
   }
@@ -59,11 +59,12 @@ class _CusImageState extends State<CusImage> {
           borderRadius: BorderRadiusDirectional.circular(radius),
           boxShadow: List.empty(growable: true),
           gradient: const LinearGradient(
-              end: Alignment.topRight,
-              begin: Alignment.bottomLeft,
-              colors: [AppColors.blue, AppColors.violet]),
+            end: Alignment.topRight,
+            begin: Alignment.bottomLeft,
+            colors: [AppColors.blue, AppColors.violet],
+          ),
         ),
-        child: Image.network(url),
+        child: Image.asset(url),
       ),
     );
   }
