@@ -126,7 +126,11 @@ class MyWidgetState extends State<CustomButton> {
     super.initState();
     textButton = "SYSTEM";
     switchUser = true;
-    iconbar = const Icon(Icons.alt_route_rounded);
+    iconbar = const Icon(
+      Icons.alt_route_rounded,
+      size: 50,
+      color: AppColors.black,
+    );
   }
 
   void click() {
@@ -134,12 +138,20 @@ class MyWidgetState extends State<CustomButton> {
       case true:
         textButton = 'VALERA';
         switchUser = false;
-        iconbar = const Icon(Icons.account_box_rounded);
+        iconbar = const Icon(
+          Icons.account_box_rounded,
+          size: 45,
+          color: AppColors.black,
+        );
         break;
       case false:
         textButton = 'AlICE';
         switchUser = true;
-        iconbar = const Icon(Icons.account_box_outlined);
+        iconbar = const Icon(
+          Icons.account_box_outlined,
+          size: 45,
+          color: AppColors.black,
+        );
         break;
     }
   }
@@ -148,33 +160,24 @@ class MyWidgetState extends State<CustomButton> {
   Widget build(BuildContext context) {
     return Row(
       children: <Widget>[
-        Container(
-          width: 300,
-          height: 45,
-          decoration: const BoxDecoration(
-            color: AppColors.transparentpol,
-            borderRadius: BorderRadius.all(
-              Radius.circular(34),
-            ),
-          ),
-          child: IconButton(
-            style: const ButtonStyle(
-              foregroundColor: MaterialStatePropertyAll(AppColors.white),
-              backgroundColor: MaterialStatePropertyAll(AppColors.blue),
-            ),
-            onPressed: () {
-              setState(() => click());
-            },
-            icon: iconbar,
-            focusColor: AppColors.secondary,
-            iconSize: 50,
+        TextButton.icon(
+          icon: (iconbar),
+          style: const ButtonStyle(
+            alignment: Alignment.topCenter,
             mouseCursor: MaterialStateMouseCursor.clickable,
           ),
-        ),
-        Text(
-          textButton,
-          style: const TextStyle(
-              fontSize: 33, fontFamily: "Sensal", color: AppColors.violet),
+          onPressed: () {
+            setState(() => click());
+          },
+          label: Text(
+            textButton,
+            textAlign: TextAlign.center,
+            style: const TextStyle(
+              fontSize: 33,
+              fontFamily: "Sensal",
+              color: AppColors.violet,
+            ),
+          ),
         ),
         const Expanded(
           flex: 5,
