@@ -173,8 +173,8 @@ class MyWidgetState extends State<CustomButton> {
             textButton,
             textAlign: TextAlign.center,
             style: const TextStyle(
-              fontSize: 33,
-              fontFamily: "Sensal",
+              fontSize: 40,
+              fontFamily: "Aref",
               color: AppColors.violet,
             ),
           ),
