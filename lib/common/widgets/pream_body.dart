@@ -34,12 +34,12 @@ class PreamBodyState extends State<PreamBody> {
           Row(
             children: const [
               CusImage(
-                //  первый блок
+                //  первый блок линк на гитхаб
                 url: "assets/img/github.png",
               ),
               CusImage(
                 // второй блок
-                url: "assets/img/wallet.png",
+                url: "assets/img/man.png",
               ),
               CusImage(
                 // третий блок
@@ -52,15 +52,15 @@ class PreamBodyState extends State<PreamBody> {
             children: const [
               CusImage(
                 // четвёртый блок
-                url: "assets/img/github.png",
+                url: "assets/img/send.png",
               ),
               CusImage(
                 // пятый блок
-                url: "assets/img/github.png",
+                url: "assets/img/wallet.png",
               ),
               CusImage(
                 // шестой блок
-                url: "assets/img/github.png",
+                url: "assets/img/gamepad.png",
               ),
             ],
           ),

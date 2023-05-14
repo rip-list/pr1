@@ -28,6 +28,9 @@ flutter:
      - assets/img/github.png
      - assets/img/wallet.png
      - assets/img/discord.png
+     - assets/img/send.png
+     - assets/img/man.png
+     - assets/img/gamepad.png
   
   fonts:
     - family: Sensal
