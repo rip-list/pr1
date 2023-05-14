@@ -109,6 +109,7 @@ class MySliverAppBar extends SliverPersistentHeaderDelegate {
   bool shouldRebuild(SliverPersistentHeaderDelegate oldDelegate) => true;
 }
 
+//Хейдер бар
 class CustomButton extends StatefulWidget {
   const CustomButton({super.key});
 
@@ -120,7 +121,7 @@ class MyWidgetState extends State<CustomButton> {
   late String textButton;
   late bool switchUser;
   late Icon iconbar;
-
+// клик по иконке смены сайта
   @override
   initState() {
     super.initState();
@@ -161,6 +162,7 @@ class MyWidgetState extends State<CustomButton> {
     return Row(
       children: <Widget>[
         TextButton.icon(
+          // икнока + текст
           icon: (iconbar),
           style: const ButtonStyle(
             alignment: Alignment.topCenter,
@@ -171,9 +173,9 @@ class MyWidgetState extends State<CustomButton> {
           },
           label: Text(
             textButton,
-            textAlign: TextAlign.center,
+            textAlign: TextAlign.justify,
             style: const TextStyle(
-              fontSize: 40,
+              fontSize: 33,
               fontFamily: "Aref",
               color: AppColors.violet,
             ),
@@ -184,6 +186,7 @@ class MyWidgetState extends State<CustomButton> {
           child: SizedBox(),
         ),
         Container(
+          // тестовый для отступа
           width: 150,
           height: 45,
           decoration: const BoxDecoration(

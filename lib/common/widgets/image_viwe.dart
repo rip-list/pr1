@@ -69,6 +69,7 @@ class _CusImageState extends State<CusImage> {
           ),
         ),
         child: Image(
+          // fit: BoxFit.scaleDown,
           image: AssetImage(url),
         ),
       ),
