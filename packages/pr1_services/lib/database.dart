@@ -17,12 +17,18 @@ class DBProvaider {
   initDB() async {
     Directory documentDirectory = await getApplicationSupportDirectory();
     String path = join(documentDirectory.path, "work.db");
-    return await openDatabase(path, version: 1, onOpen: (db) {},
-        onCreate: (Database db, int version) async {
-      await db.execute("CREATE TABLE assets ("
-          "id INTEGER PRIMARY KEY,"
-          "img VARCHAR(40)"
-          ")");
-    });
+    return await openDatabase(
+      path,
+      version: 1,
+      onOpen: (db) {},
+      onCreate: (Database db, int version) async {
+        await db.execute("CREATE TABLE assets ("
+            "id INTEGER PRIMARY KEY,"
+            "img VARCHAR(40)"
+            ")");
+      },
+    );
   }
+
+  // addItem
 }
