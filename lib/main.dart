@@ -29,6 +29,7 @@ TODO?: читай ниже мой пастулат
 SecBody->PreamBody->Sliver->FloatBar->МуApp->RUN
 
 по мере написания что то ещё появится, придумаю карту как это разрисовать
+// https://youtu.be/7YSi9vLma2s продолжаем
 
 
 */
