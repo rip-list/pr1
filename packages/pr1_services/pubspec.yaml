@@ -1,0 +1,27 @@
+name: pr1_services
+description: A new Flutter project.
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+version: 1.0.0+1
+
+environment:
+  sdk: '>=2.19.6 <3.0.0'
+
+dependencies:
+  sqflite: ^2.2.8+2
+  path_provider: ^2.0.15 
+  path: any
+  flutter_web_plugins:
+    sdk: flutter
+  
+  pr1_models:
+    path: ../pr1_models
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+ 
+  flutter_lints: ^2.0.1
+
+flutter:
+
+  uses-material-design: true
