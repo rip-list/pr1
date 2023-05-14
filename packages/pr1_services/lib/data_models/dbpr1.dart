@@ -1,17 +1,21 @@
 class DBpr {
   int id;
-  String img;
+  String nickname;
+  String description;
 
   DBpr({
     this.id = 0,
-    this.img = "",
+    this.nickname = "",
+    this.description = "",
   });
   factory DBpr.fromMap(Map<String, dynamic> json) => DBpr(
         id: json['id'] ?? 0,
-        img: json['img'] ?? '',
+        nickname: json['nickname'] ?? '',
+        description: json['description'] ?? '',
       );
   Map<String, dynamic> toMap() => {
         "id": id,
-        "img": img,
+        "nickname": nickname,
+        "description": description,
       };
 }

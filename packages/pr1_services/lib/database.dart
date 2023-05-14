@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:pr1_services/data_models/dbpr1.dart';
 import 'package:sqflite/sqflite.dart';
 
 class DBProvaider {
@@ -25,10 +26,16 @@ class DBProvaider {
         await db.execute("CREATE TABLE assets ("
             "id INTEGER PRIMARY KEY,"
             "img VARCHAR(40)"
+            "CREATE TABLE comment (id INTEGER PRIMARY KEY, nickname text, description TEXT )"
             ")");
       },
     );
   }
 
-  // addItem
+  addItem(DBpr pr) async {
+    final db = await database;
+    var raw = await db.rawInsert(
+        "INSERT INTO comment (id, nickname, description) VALUES(?,?,?)",
+        [pr.id, pr.nickname, pr.description]);
+  }
 }
