@@ -1,9 +1,10 @@
 class PrModel {
   final int id;
-  final String img;
-
-  PrModel({
+  final String nickname;
+  final String description;
+  PrModel( {
     required this.id,
-    required this.img,
+    required this.nickname,
+    required this.description,
   });
 }

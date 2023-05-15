@@ -200,6 +200,27 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.4"
+  pr1_models:
+    dependency: "direct main"
+    description:
+      path: "packages/pr1_models"
+      relative: true
+    source: path
+    version: "1.0.0+1"
+  pr1_repositories:
+    dependency: "direct main"
+    description:
+      path: "packages/pr1_repositories"
+      relative: true
+    source: path
+    version: "1.0.0+1"
+  pr1_services:
+    dependency: transitive
+    description:
+      path: "packages/pr1_services"
+      relative: true
+    source: path
+    version: "1.0.0+1"
   process:
     dependency: transitive
     description:

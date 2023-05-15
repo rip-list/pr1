@@ -8,13 +8,18 @@ environment:
   sdk: '>=2.19.6 <3.0.0'
 
 dependencies:
-
-  flutter_web_plugins:
-    sdk: flutter
   sqflite: ^2.2.8+2
   path_provider: ^2.0.15 
   path: any
+  pr1_models:
+    path: packages/pr1_models
+  pr1_repositories:
+    path: packages/pr1_repositories
+    
+  flutter_web_plugins:
+    sdk: flutter
 
+  
 dev_dependencies:
   flutter_test:
     sdk: flutter

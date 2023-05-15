@@ -1,8 +1,10 @@
 // ignore: depend_on_referenced_packages
 import 'package:flutter/material.dart';
 import 'common/widgets/widget_home.dart';
+import 'package:pr1_services/database.dart';
 
 void main() {
+   DBProvaider.db.initDB() ;
   runApp(const MyApp());
 }
 

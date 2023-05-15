@@ -1,5 +1,11 @@
+// ignore_for_file: depend_on_referenced_packages
+
 import 'package:pr1/common/constants/app_colors.dart';
 import 'package:flutter/material.dart';
+// ignore: unused_import
+import 'package:pr1_services/database.dart';
+import 'package:pr1_models/pr_model.dart';
+import 'package:pr1_repositories/pr1_repositories.dart';
 
 class CommentMsg extends StatefulWidget {
   const CommentMsg({super.key});
@@ -9,15 +15,20 @@ class CommentMsg extends StatefulWidget {
 }
 
 class CommentMsgState extends State<CommentMsg> {
-  TextEditingController teNickname = TextEditingController();
-  TextEditingController teDescription = TextEditingController();
+  final TextEditingController _teNickname = TextEditingController();
+  final TextEditingController _teDescription = TextEditingController();
   @override
   Widget build(BuildContext context) {
+    // ignore: avoid_unnecessary_containers
     return Container(
+      height: 400,
+      width: 700,
+      color: AppColors.transparentblue,
       child: Column(
         children: [
           TextField(
-            controller: teNickname,
+            // никнейм
+            controller: _teNickname,
             decoration: const InputDecoration(
               hintText: 'Input Nick',
               border: OutlineInputBorder(
@@ -27,8 +38,13 @@ class CommentMsgState extends State<CommentMsg> {
               ),
             ),
           ),
+          const SizedBox(
+            width: 40,
+            height: 40,
+          ),
           TextField(
-            controller: teDescription,
+            // текст комментария
+            controller: _teDescription,
             decoration: const InputDecoration(
               hintText: 'Input text comment',
               border: OutlineInputBorder(
@@ -49,7 +65,9 @@ class CommentMsgState extends State<CommentMsg> {
             ),
             child: ElevatedButton(
               onPressed: () {
-                final pr = DBpr
+                final pr = PrModel(id: 1, nickname:_teNickname.text , description: _teDescription.text,);
+               Pr1Repositories().addItem(pr);
+               Navigator.pop(context);
               },
               child: const Text('Send'),
             ),
