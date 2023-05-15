@@ -23,12 +23,11 @@ class DBProvaider {
       version: 1,
       onOpen: (db) {},
       onCreate: (Database db, int version) async {
-        await db.execute("CREATE TABLE assets ("
-            "id INTEGER PRIMARY KEY,"
-            "img VARCHAR(40)"
+        await db.execute(
             "CREATE TABLE comment (id INTEGER PRIMARY KEY, nickname text, description TEXT )"
             ")");
       },
+      
     );
   }
 
@@ -36,6 +35,10 @@ class DBProvaider {
     final db = await database;
     var raw = await db.rawInsert(
         "INSERT INTO comment (id, nickname, description) VALUES(?,?,?)",
-        [pr.id, pr.nickname, pr.description]);
+        [pr.id, pr.nickname, pr.description],
+        );
+        return raw;
   }
+  
 }
+debugPrint(covariant){}

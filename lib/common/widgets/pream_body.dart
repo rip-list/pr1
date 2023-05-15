@@ -7,6 +7,7 @@ import 'package:pr1/common/widgets/image_viwe.dart';
 // ignore: unused_import
 import 'allert_comment.dart';
 
+
 class PreamBody extends StatefulWidget {
   const PreamBody({super.key});
 
@@ -32,6 +33,7 @@ class PreamBodyState extends State<PreamBody> {
       fit: BoxFit.scaleDown,
       child: Column(
         children: [
+          
           // первый ряд
           Row(
             children: const [
