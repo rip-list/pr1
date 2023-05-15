@@ -71,6 +71,9 @@ class _CusImageState extends State<CusImage> {
         child: Image(
           // fit: BoxFit.scaleDown,
           image: AssetImage(url),
+          color: AppColors.black,
+          height: 64,
+          width: 64,
         ),
       ),
     );
