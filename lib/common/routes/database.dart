@@ -8,29 +8,8 @@ class Comment extends Table {
   TextColumn get description => text().nullable()();
 }
 
-class Recipes extends Table {
-  IntColumn get id => integer().autoIncrement()();
-  TextColumn get title => text().withLength(max: 16)();
-  TextColumn get instructions => text()();
-  IntColumn get category => integer().nullable()();
-}
-
-class IngredientInRecipes extends Table {
-  @override
-  String get tableName => 'recipe_ingredients';
-
-  // We can also specify custom primary keys
-  @override
-  Set<Column> get primaryKey => {recipe, ingredient};
-
-  IntColumn get recipe => integer()();
-  IntColumn get ingredient => integer()();
-
-  IntColumn get amountInGrams => integer().named('amount')();
-}
-
 @UseMoor(
-  tables: [Comment, Recipes, IngredientInRecipes],
+  tables: [Comment],
   queries: {
     // query to load the total weight for each recipe by loading all ingredients
     // and taking the sum of their amountInGrams.
@@ -43,17 +22,15 @@ class IngredientInRecipes extends Table {
   },
 )
 class Database extends _$Database {
-  Database(QueryExecutor e) : super(e);
+  Database(QueryExecutor key) : super(key);
 
-  @override
   int get schemaVersion => 1;
 
-  @override
   MigrationStrategy get migration {
     return MigrationStrategy(
       beforeOpen: (details) async {
         // populate data
-        await into(categories)
+        await into(details)
             .insert(const CategoriesCompanion(description: Value('Sweets')));
       },
     );
