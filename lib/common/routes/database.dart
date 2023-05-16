@@ -1,11 +1,10 @@
-import "package:moor/moor_web.dart";
 import 'package:moor/moor.dart';
-import 'package:flutter/material.dart';
 part 'test.g.dart';
 
-@DataClassName('Category')
-class Categories extends Table {
+@DataClassName('comment')
+class Comment extends Table {
   IntColumn get id => integer().autoIncrement()();
+  TextColumn get nickname => text().withLength(max: 40)();
   TextColumn get description => text().nullable()();
 }
 
@@ -14,12 +13,6 @@ class Recipes extends Table {
   TextColumn get title => text().withLength(max: 16)();
   TextColumn get instructions => text()();
   IntColumn get category => integer().nullable()();
-}
-
-class Ingredients extends Table {
-  IntColumn get id => integer().autoIncrement()();
-  TextColumn get name => text()();
-  IntColumn get caloriesPer100g => integer().named('calories')();
 }
 
 class IngredientInRecipes extends Table {
@@ -37,7 +30,7 @@ class IngredientInRecipes extends Table {
 }
 
 @UseMoor(
-  tables: [Categories, Recipes, Ingredients, IngredientInRecipes],
+  tables: [Comment, Recipes, IngredientInRecipes],
   queries: {
     // query to load the total weight for each recipe by loading all ingredients
     // and taking the sum of their amountInGrams.
