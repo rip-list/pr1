@@ -1,5 +1,6 @@
-import 'package:moor/moor.dart';
-part 'test.g.dart';
+
+import 'package:moor_flutter/moor_flutter.dart';
+part "database.g.dart";
 
 @DataClassName('comment')
 class Comment extends Table {
@@ -7,32 +8,23 @@ class Comment extends Table {
   TextColumn get nickname => text().withLength(max: 40)();
   TextColumn get description => text().nullable()();
 }
+@DataClassName('links')
+class Links extends Table 
+{
+IntColumn get id => integer().autoIncrement()();
+TextColumn get link => text().nullable()();
+
+
+}
 
 @UseMoor(
-  tables: [Comment],
-  queries: {
-    // query to load the total weight for each recipe by loading all ingredients
-    // and taking the sum of their amountInGrams.
-    'totalWeight': '''
-      SELECT r.title, SUM(ir.amount) AS total_weight
-        FROM recipes r
-        INNER JOIN recipe_ingredients ir ON ir.recipe = r.id
-      GROUP BY r.id
-     '''
-  },
+  tables: [Comment, Links],
+  
 )
 class Database extends _$Database {
-  Database(QueryExecutor key) : super(key);
+  Database() : super(FlutterQueryExecutor.inDatabaseFolder(path: "db.sqllite", logStatements: true));
 
+ @override
   int get schemaVersion => 1;
-
-  MigrationStrategy get migration {
-    return MigrationStrategy(
-      beforeOpen: (details) async {
-        // populate data
-        await into(details)
-            .insert(const CategoriesCompanion(description: Value('Sweets')));
-      },
-    );
-  }
+  Future<List<Comment>> getAllTasks() => select(comment).get();
 }
