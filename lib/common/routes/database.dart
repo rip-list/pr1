@@ -20,7 +20,7 @@ class Links extends Table {
 class Database extends _$Database {
   Database()
       : super(FlutterQueryExecutor.inDatabaseFolder(
-            path: "db.sqllite", logStatements: true));
+            path: "db.sqlite", logStatements: true));
 
   @override
   int get schemaVersion => 1;
