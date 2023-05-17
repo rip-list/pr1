@@ -7,15 +7,15 @@ part of 'database.dart';
 // **************************************************************************
 
 // ignore_for_file: type=lint
-class comment extends DataClass implements Insertable<comment> {
+class task extends DataClass implements Insertable<task> {
   final int id;
   final String nickname;
   final String? description;
-  comment({required this.id, required this.nickname, this.description});
-  factory comment.fromData(Map<String, dynamic> data, GeneratedDatabase db,
+  task({required this.id, required this.nickname, this.description});
+  factory task.fromData(Map<String, dynamic> data, GeneratedDatabase db,
       {String? prefix}) {
     final effectivePrefix = prefix ?? '';
-    return comment(
+    return task(
       id: const IntType()
           .mapFromDatabaseResponse(data['${effectivePrefix}id'])!,
       nickname: const StringType()
@@ -35,8 +35,8 @@ class comment extends DataClass implements Insertable<comment> {
     return map;
   }
 
-  CommentCompanion toCompanion(bool nullToAbsent) {
-    return CommentCompanion(
+  TasksCompanion toCompanion(bool nullToAbsent) {
+    return TasksCompanion(
       id: Value(id),
       nickname: Value(nickname),
       description: description == null && nullToAbsent
@@ -45,10 +45,10 @@ class comment extends DataClass implements Insertable<comment> {
     );
   }
 
-  factory comment.fromJson(Map<String, dynamic> json,
+  factory task.fromJson(Map<String, dynamic> json,
       {ValueSerializer? serializer}) {
     serializer ??= moorRuntimeOptions.defaultSerializer;
-    return comment(
+    return task(
       id: serializer.fromJson<int>(json['id']),
       nickname: serializer.fromJson<String>(json['nickname']),
       description: serializer.fromJson<String?>(json['description']),
@@ -64,14 +64,14 @@ class comment extends DataClass implements Insertable<comment> {
     };
   }
 
-  comment copyWith({int? id, String? nickname, String? description}) => comment(
+  task copyWith({int? id, String? nickname, String? description}) => task(
         id: id ?? this.id,
         nickname: nickname ?? this.nickname,
         description: description ?? this.description,
       );
   @override
   String toString() {
-    return (StringBuffer('comment(')
+    return (StringBuffer('task(')
           ..write('id: $id, ')
           ..write('nickname: $nickname, ')
           ..write('description: $description')
@@ -84,27 +84,27 @@ class comment extends DataClass implements Insertable<comment> {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      (other is comment &&
+      (other is task &&
           other.id == this.id &&
           other.nickname == this.nickname &&
           other.description == this.description);
 }
 
-class CommentCompanion extends UpdateCompanion<comment> {
+class TasksCompanion extends UpdateCompanion<task> {
   final Value<int> id;
   final Value<String> nickname;
   final Value<String?> description;
-  const CommentCompanion({
+  const TasksCompanion({
     this.id = const Value.absent(),
     this.nickname = const Value.absent(),
     this.description = const Value.absent(),
   });
-  CommentCompanion.insert({
+  TasksCompanion.insert({
     this.id = const Value.absent(),
     required String nickname,
     this.description = const Value.absent(),
   }) : nickname = Value(nickname);
-  static Insertable<comment> custom({
+  static Insertable<task> custom({
     Expression<int>? id,
     Expression<String>? nickname,
     Expression<String?>? description,
@@ -116,9 +116,9 @@ class CommentCompanion extends UpdateCompanion<comment> {
     });
   }
 
-  CommentCompanion copyWith(
+  TasksCompanion copyWith(
       {Value<int>? id, Value<String>? nickname, Value<String?>? description}) {
-    return CommentCompanion(
+    return TasksCompanion(
       id: id ?? this.id,
       nickname: nickname ?? this.nickname,
       description: description ?? this.description,
@@ -142,7 +142,7 @@ class CommentCompanion extends UpdateCompanion<comment> {
 
   @override
   String toString() {
-    return (StringBuffer('CommentCompanion(')
+    return (StringBuffer('TasksCompanion(')
           ..write('id: $id, ')
           ..write('nickname: $nickname, ')
           ..write('description: $description')
@@ -151,11 +151,11 @@ class CommentCompanion extends UpdateCompanion<comment> {
   }
 }
 
-class $CommentTable extends Comment with TableInfo<$CommentTable, comment> {
+class $TasksTable extends Tasks with TableInfo<$TasksTable, task> {
   @override
   final GeneratedDatabase attachedDatabase;
   final String? _alias;
-  $CommentTable(this.attachedDatabase, [this._alias]);
+  $TasksTable(this.attachedDatabase, [this._alias]);
   final VerificationMeta _idMeta = const VerificationMeta('id');
   @override
   late final GeneratedColumn<int?> id = GeneratedColumn<int?>(
@@ -167,7 +167,8 @@ class $CommentTable extends Comment with TableInfo<$CommentTable, comment> {
   @override
   late final GeneratedColumn<String?> nickname = GeneratedColumn<String?>(
       'nickname', aliasedName, false,
-      additionalChecks: GeneratedColumn.checkTextLength(maxTextLength: 40),
+      additionalChecks:
+          GeneratedColumn.checkTextLength(minTextLength: 3, maxTextLength: 40),
       type: const StringType(),
       requiredDuringInsert: true);
   final VerificationMeta _descriptionMeta =
@@ -179,11 +180,11 @@ class $CommentTable extends Comment with TableInfo<$CommentTable, comment> {
   @override
   List<GeneratedColumn> get $columns => [id, nickname, description];
   @override
-  String get aliasedName => _alias ?? 'comment';
+  String get aliasedName => _alias ?? 'tasks';
   @override
-  String get actualTableName => 'comment';
+  String get actualTableName => 'tasks';
   @override
-  VerificationContext validateIntegrity(Insertable<comment> instance,
+  VerificationContext validateIntegrity(Insertable<task> instance,
       {bool isInserting = false}) {
     final context = VerificationContext();
     final data = instance.toColumns(true);
@@ -208,14 +209,14 @@ class $CommentTable extends Comment with TableInfo<$CommentTable, comment> {
   @override
   Set<GeneratedColumn> get $primaryKey => {id};
   @override
-  comment map(Map<String, dynamic> data, {String? tablePrefix}) {
-    return comment.fromData(data, attachedDatabase,
+  task map(Map<String, dynamic> data, {String? tablePrefix}) {
+    return task.fromData(data, attachedDatabase,
         prefix: tablePrefix != null ? '$tablePrefix.' : null);
   }
 
   @override
-  $CommentTable createAlias(String alias) {
-    return $CommentTable(attachedDatabase, alias);
+  $TasksTable createAlias(String alias) {
+    return $TasksTable(attachedDatabase, alias);
   }
 }
 
@@ -392,10 +393,10 @@ class $LinksTable extends Links with TableInfo<$LinksTable, links> {
 
 abstract class _$Database extends GeneratedDatabase {
   _$Database(QueryExecutor e) : super(SqlTypeSystem.defaultInstance, e);
-  late final $CommentTable comment = $CommentTable(this);
+  late final $TasksTable tasks = $TasksTable(this);
   late final $LinksTable links = $LinksTable(this);
   @override
   Iterable<TableInfo> get allTables => allSchemaEntities.whereType<TableInfo>();
   @override
-  List<DatabaseSchemaEntity> get allSchemaEntities => [comment, links];
+  List<DatabaseSchemaEntity> get allSchemaEntities => [tasks, links];
 }

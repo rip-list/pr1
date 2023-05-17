@@ -6,5 +6,6 @@
     "editor.wordWrap": "wordWrapColumn",
     "dart.flutterRunAdditionalArgs": [
         "--no-sound-null-safety"
-    ]
+    ],
+    "cmake.sourceDirectory": "C:/Users/hostPE/Desktop/flut_prod/pr1/windows/flutter"
 }
