@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:pr1/common/constants/app_colors.dart';
 // ignore: unused_import
 import 'package:pr1/common/widgets/image_viwe.dart';
+import 'allert_comment.dart';
 
 class PreamBody extends StatefulWidget {
   const PreamBody({super.key});
@@ -81,6 +82,7 @@ class PreamBodyState extends State<PreamBody> {
               ),
             ],
           ),
+          CommentMsg()
         ],
       ),
     );
