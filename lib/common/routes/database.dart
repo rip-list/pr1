@@ -4,8 +4,9 @@ part "database.g.dart";
 @DataClassName('task')
 class Tasks extends Table {
   IntColumn get id => integer().autoIncrement()();
-  TextColumn get nickname => text().withLength(min: 3, max: 40)();
-  TextColumn get description => text().nullable()();
+  TextColumn get nickname =>
+      text().withLength(min: 3, max: 40).named("nickname")();
+  TextColumn get description => text()();
 }
 
 @DataClassName('links')
@@ -27,4 +28,8 @@ class Database extends _$Database {
 
   Future<List> getAllTasks() => select(tasks).get();
   Stream<List> watchAllTasks() => select(tasks).watch();
+  // ignore: non_constant_identifier_names
+  Future insertTask(Task) => into(tasks).insert(task as Insertable<task>);
+  // ignore: non_constant_identifier_names
+  Future deleteTask(Task) => delete(tasks).delete(task as Insertable<task>);
 }

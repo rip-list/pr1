@@ -3,6 +3,8 @@
 import 'package:pr1/common/constants/app_colors.dart';
 import 'package:flutter/material.dart';
 // ignore: unused_import
+import 'package:pr1/common/routes/database.dart';
+// part "package:pr1/common/routes/database.g.dart";
 
 class CommentMsg extends StatefulWidget {
   const CommentMsg({super.key});
@@ -12,8 +14,8 @@ class CommentMsg extends StatefulWidget {
 }
 
 class CommentMsgState extends State<CommentMsg> {
-  final TextEditingController _teNickname = TextEditingController();
-  final TextEditingController _teDescription = TextEditingController();
+  final TextEditingController teNickname = TextEditingController();
+  final TextEditingController teDescription = TextEditingController();
   @override
   Widget build(BuildContext context) {
     // ignore: avoid_unnecessary_containers
@@ -25,7 +27,7 @@ class CommentMsgState extends State<CommentMsg> {
         children: [
           TextField(
             // никнейм
-            controller: _teNickname,
+            controller: teNickname,
             decoration: const InputDecoration(
               hintText: 'Input Nick',
               border: OutlineInputBorder(
@@ -41,7 +43,8 @@ class CommentMsgState extends State<CommentMsg> {
           ),
           TextField(
             // текст комментария
-            controller: _teDescription,
+            controller: teDescription,
+            keyboardType: TextInputType.name,
             decoration: const InputDecoration(
               hintText: 'Input text comment',
               border: OutlineInputBorder(
@@ -61,7 +64,14 @@ class CommentMsgState extends State<CommentMsg> {
               ),
             ),
             child: ElevatedButton(
-              onPressed: () {},
+              onPressed: () {
+                Database().insertTask(
+                  TasksCompanion.insert(
+                    nickname: teNickname.text,
+                    description: teDescription.text,
+                  ),
+                );
+              },
               child: const Text('Send'),
             ),
           )
