@@ -10,8 +10,8 @@ part of 'database.dart';
 class task extends DataClass implements Insertable<task> {
   final int id;
   final String nickname;
-  final String? description;
-  task({required this.id, required this.nickname, this.description});
+  final String description;
+  task({required this.id, required this.nickname, required this.description});
   factory task.fromData(Map<String, dynamic> data, GeneratedDatabase db,
       {String? prefix}) {
     final effectivePrefix = prefix ?? '';
@@ -21,7 +21,7 @@ class task extends DataClass implements Insertable<task> {
       nickname: const StringType()
           .mapFromDatabaseResponse(data['${effectivePrefix}nickname'])!,
       description: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}description']),
+          .mapFromDatabaseResponse(data['${effectivePrefix}description'])!,
     );
   }
   @override
@@ -29,9 +29,7 @@ class task extends DataClass implements Insertable<task> {
     final map = <String, Expression>{};
     map['id'] = Variable<int>(id);
     map['nickname'] = Variable<String>(nickname);
-    if (!nullToAbsent || description != null) {
-      map['description'] = Variable<String?>(description);
-    }
+    map['description'] = Variable<String>(description);
     return map;
   }
 
@@ -39,9 +37,7 @@ class task extends DataClass implements Insertable<task> {
     return TasksCompanion(
       id: Value(id),
       nickname: Value(nickname),
-      description: description == null && nullToAbsent
-          ? const Value.absent()
-          : Value(description),
+      description: Value(description),
     );
   }
 
@@ -51,7 +47,7 @@ class task extends DataClass implements Insertable<task> {
     return task(
       id: serializer.fromJson<int>(json['id']),
       nickname: serializer.fromJson<String>(json['nickname']),
-      description: serializer.fromJson<String?>(json['description']),
+      description: serializer.fromJson<String>(json['description']),
     );
   }
   @override
@@ -60,7 +56,7 @@ class task extends DataClass implements Insertable<task> {
     return <String, dynamic>{
       'id': serializer.toJson<int>(id),
       'nickname': serializer.toJson<String>(nickname),
-      'description': serializer.toJson<String?>(description),
+      'description': serializer.toJson<String>(description),
     };
   }
 
@@ -93,7 +89,7 @@ class task extends DataClass implements Insertable<task> {
 class TasksCompanion extends UpdateCompanion<task> {
   final Value<int> id;
   final Value<String> nickname;
-  final Value<String?> description;
+  final Value<String> description;
   const TasksCompanion({
     this.id = const Value.absent(),
     this.nickname = const Value.absent(),
@@ -102,12 +98,13 @@ class TasksCompanion extends UpdateCompanion<task> {
   TasksCompanion.insert({
     this.id = const Value.absent(),
     required String nickname,
-    this.description = const Value.absent(),
-  }) : nickname = Value(nickname);
+    required String description,
+  })  : nickname = Value(nickname),
+        description = Value(description);
   static Insertable<task> custom({
     Expression<int>? id,
     Expression<String>? nickname,
-    Expression<String?>? description,
+    Expression<String>? description,
   }) {
     return RawValuesInsertable({
       if (id != null) 'id': id,
@@ -117,7 +114,7 @@ class TasksCompanion extends UpdateCompanion<task> {
   }
 
   TasksCompanion copyWith(
-      {Value<int>? id, Value<String>? nickname, Value<String?>? description}) {
+      {Value<int>? id, Value<String>? nickname, Value<String>? description}) {
     return TasksCompanion(
       id: id ?? this.id,
       nickname: nickname ?? this.nickname,
@@ -135,7 +132,7 @@ class TasksCompanion extends UpdateCompanion<task> {
       map['nickname'] = Variable<String>(nickname.value);
     }
     if (description.present) {
-      map['description'] = Variable<String?>(description.value);
+      map['description'] = Variable<String>(description.value);
     }
     return map;
   }
@@ -175,8 +172,8 @@ class $TasksTable extends Tasks with TableInfo<$TasksTable, task> {
       const VerificationMeta('description');
   @override
   late final GeneratedColumn<String?> description = GeneratedColumn<String?>(
-      'description', aliasedName, true,
-      type: const StringType(), requiredDuringInsert: false);
+      'description', aliasedName, false,
+      type: const StringType(), requiredDuringInsert: true);
   @override
   List<GeneratedColumn> get $columns => [id, nickname, description];
   @override
@@ -202,6 +199,8 @@ class $TasksTable extends Tasks with TableInfo<$TasksTable, task> {
           _descriptionMeta,
           description.isAcceptableOrUnknown(
               data['description']!, _descriptionMeta));
+    } else if (isInserting) {
+      context.missing(_descriptionMeta);
     }
     return context;
   }

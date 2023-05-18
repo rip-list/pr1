@@ -6,7 +6,7 @@ class Tasks extends Table {
   IntColumn get id => integer().autoIncrement()();
   TextColumn get nickname =>
       text().withLength(min: 3, max: 40).named("nickname")();
-  TextColumn get description => text()();
+  TextColumn get description => text().named("description")();
 }
 
 @DataClassName('links')
