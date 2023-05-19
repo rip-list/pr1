@@ -28,8 +28,8 @@ class Database extends _$Database {
 
   Future<List> getAllTasks() => select(tasks).get();
   Stream<List> watchAllTasks() => select(tasks).watch();
-  // ignore: non_constant_identifier_names
-  Future insertTask(Task) => into(tasks).insert(task as Insertable<task>);
-  // ignore: non_constant_identifier_names
-  Future deleteTask(Task) => delete(tasks).delete(task as Insertable<task>);
+  // ignore: non_constant_identifier_names, avoid_types_as_parameter_names
+  Future insertTask(task) => into(tasks).insert(task);
+  // ignore: non_constant_identifier_names, avoid_types_as_parameter_names
+  Future deleteTask(task) => delete(tasks).delete(task);
 }

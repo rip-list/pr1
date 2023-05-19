@@ -65,12 +65,10 @@ class CommentMsgState extends State<CommentMsg> {
             ),
             child: ElevatedButton(
               onPressed: () {
-                Database().insertTask(
-                  TasksCompanion.insert(
+                Database().insertTask(task(
                     nickname: teNickname.text,
                     description: teDescription.text,
-                  ),
-                );
+                    id: 1));
               },
               child: const Text('Send'),
             ),
