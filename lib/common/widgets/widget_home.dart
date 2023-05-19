@@ -11,18 +11,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final db = Database();
-    return MultiProvider(
-      builder: (context, child) => MaterialApp(
-        debugShowCheckedModeBanner: false,
-        title: 'Home',
-        theme: ThemeData(primaryColor: AppColors.violet, fontFamily: "Aref"),
-        home: const FloatBar(),
-      ),
-      providers: [
-        Provider(
-          create: (_) => db.tasks,
-        ),
-      ],
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: 'Home',
+      theme: ThemeData(primaryColor: AppColors.violet, fontFamily: "Aref"),
+      home: const FloatBar(),
     );
   }
 }
