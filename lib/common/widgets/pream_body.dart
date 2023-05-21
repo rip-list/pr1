@@ -82,7 +82,7 @@ class PreamBodyState extends State<PreamBody> {
               ),
             ],
           ),
-          CommentMsg()
+          const CommentMsg()
         ],
       ),
     );

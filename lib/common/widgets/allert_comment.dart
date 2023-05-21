@@ -16,6 +16,7 @@ class CommentMsg extends StatefulWidget {
 class CommentMsgState extends State<CommentMsg> {
   final TextEditingController teNickname = TextEditingController();
   final TextEditingController teDescription = TextEditingController();
+  final database = AppDatabase();
   @override
   Widget build(BuildContext context) {
     // ignore: avoid_unnecessary_containers
@@ -65,10 +66,8 @@ class CommentMsgState extends State<CommentMsg> {
             ),
             child: ElevatedButton(
               onPressed: () {
-                Database().insertTask(task(
-                    nickname: teNickname.text,
-                    description: teDescription.text,
-                    id: 1));
+                database.addRecord(nickname: teNickname.text, description: teDescription.text);
+                    debugPrint("click");
               },
               child: const Text('Send'),
             ),

@@ -1,14 +1,20 @@
 // ignore: depend_on_referenced_packages
 import 'package:flutter/material.dart';
-import 'common/widgets/widget_home.dart';
+import 'package:pr1/common/routes/database.dart';
+// import 'package:sqflite/sqflite.dart';
+import 'common/widgets/widget_home.dart'; 
 
-void main() {
-  runApp(const MyApp());
+// import "package:moor_flutter/moor_flutter.dart" as moor_flutter; 
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+
+  final database = AppDatabase();
+  
+
+  runApp( MyApp(database: database));
 }
-
-
-
- 
 
 
 
