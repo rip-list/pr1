@@ -9,11 +9,12 @@ import 'common/widgets/widget_home.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-
   final database = AppDatabase();
-  
+  await database.openDatabase();
 
-  runApp( MyApp(database: database));
+  runApp(MyApp(database: database));
+
+  // await database.closeDatabase();
 }
 
 

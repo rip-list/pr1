@@ -4,7 +4,7 @@ import 'package:pr1/common/constants/app_colors.dart';
 import 'package:flutter/material.dart';
 // ignore: unused_import
 import 'package:pr1/common/routes/database.dart';
-// part "package:pr1/common/routes/database.g.dart";
+
 
 class CommentMsg extends StatefulWidget {
   const CommentMsg({super.key});
@@ -65,9 +65,18 @@ class CommentMsgState extends State<CommentMsg> {
               ),
             ),
             child: ElevatedButton(
-              onPressed: () {
-                database.addRecord(nickname: teNickname.text, description: teDescription.text);
-                    debugPrint("click");
+              onPressed: () async {
+                // вставка значения в бд
+                final newTodo =Todo(
+                  nickname: teNickname.text,
+                  description: teDescription.text,
+
+                  );
+                  print(teNickname.text);
+                await database.insertTodo(newTodo);
+                teDescription.clear();
+                teNickname.clear();
+              print("sdf");
               },
               child: const Text('Send'),
             ),

@@ -1,62 +1,86 @@
+// ignore_for_file: unused_import, depend_on_referenced_packages
+import 'dart:developer';
+import 'dart:typed_data';
+import 'package:idb_shim/idb.dart';
+import 'package:idb_shim/idb_browser.dart';
 
-import 'package:moor_flutter/moor_flutter.dart';
-import 'package:sqflite/sqflite.dart' as sqflite;
+class AppDatabase {
+  Database? _database;
 
-part 'database.g.dart';
+  Future<void> openDatabase() async {
+    final idbFactory = getIdbFactory();
+    final database = await idbFactory?.open('data.db', version: 1,
+        onUpgradeNeeded: (VersionChangeEvent event) {
+      final db = event.database;
+      if (!db.objectStoreNames.contains('todos')) {
+        db.createObjectStore('todos', autoIncrement: true);
+      }
+    });
+    _database = database;
+  }
 
-class Todos extends Table {
-  IntColumn get id => integer().autoIncrement()();
-  TextColumn get nickname => text().withLength(min: 3, max: 40 )();
-  TextColumn get description => text()();
+  Future<void> closeDatabase() async {
+    _database?.close();
+  }
+  // вставка значения 
+Future<void> insertTodo(Todo todo) async {
+    final transaction = _database?.transaction('todos', 'readwrite');
+    final store = transaction?.objectStore('todos');
+    await store?.add(todo.toMap());
+    await transaction?.completed;
+    // debugger
+    print("удачно");
+  }
+// получения значения 
+  Future<List<Todo>> getAllTodos() async {
+    final transaction = _database?.transaction('todos', 'readonly');
+    final store = transaction?.objectStore('todos');
+    final records = await store?.getAll();
+   return (records as List<Map<String, dynamic>>?)
+    ?.map((record) => Todo.fromMap(record))
+    .toList() ?? [];
+  }
+// обновление значения 
+  Future<void> updateTodo(Todo todo) async {
+    final transaction = _database?.transaction('todos', 'readwrite');
+    final store = transaction?.objectStore('todos');
+    await store?.put(todo.toMap());
+    await transaction?.completed;
+  }
+// удаленние значения
+  Future<void> deleteTodo(int id) async {
+    final transaction = _database?.transaction('todos', 'readwrite');
+    final store = transaction?.objectStore('todos');
+    await store?.delete(id);
+    await transaction?.completed;
+  }
 }
 
-@UseMoor(tables: [Todos])
-class AppDatabase extends _$AppDatabase {
-  AppDatabase()
-      : super(_openConnection());
+class Todo {
+  int? id;
+  String nickname;
+  String description;
 
-  @override
-  int get schemaVersion => 1;
+  Todo({
+    this.id,
+    required this.nickname,
+    required this.description,
+  });
 
-  @override
-  MigrationStrategy get migration =>
-      MigrationStrategy(onCreate: (Migrator m) {
-        return m.createAll();
-      }, onUpgrade: (Migrator m, int from, int to) async {
-        if (from == 1) {
-          // Migration code from version 1 to 2
-        }
-      });
-Future<DatabaseConnection> _connect() async{
-  return AppDatabase().connection;
-}
+  Map<String, dynamic> toMap() {
+    return {
+      'id': id,
+      'nickname': nickname,
+      'description': description,
+    };
+  }
 
-
-Future<void> addRecord( {required String description, required String nickname}) async {
-  final todo = TodosCompanion(nickname: Value(nickname), description: Value(description));
-  await into(todos).insert(todo);
-}
-
-}
-
-FlutterQueryExecutor _openConnection() {
-  return FlutterQueryExecutor.inDatabaseFolder(
-    path: 'app_database.sqlite',
-    logStatements: true,
+  static Todo fromMap(Map<String, dynamic> map) {
+  return Todo(
+    id: map['id'] as int?,
+    nickname: map['nickname'] as String,
+    description: map['description'] as String,
   );
-  
 }
-
-// ignore: unused_element
-Future<void> _createSchema(sqflite.Database db, int version) {
-  return db.execute('''
-   CREATE TABLE todos (
-  id INT PRIMARY KEY,
-  nickname VARCHAR(40) CHECK (LENGTH(nickname) >= 3 AND LENGTH(nickname) <= 40),
-  description TEXT NOT NULL
-);
-  ''');
-
-  
 }
-
+ 

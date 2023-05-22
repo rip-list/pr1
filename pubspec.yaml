@@ -8,16 +8,11 @@ environment:
   sdk: '>=2.19.6 <3.0.0'
 
 dependencies:
-  moor: ^4.5.0
-  path_provider: ^2.0.0
-  path: ^1.8.0
-  sqflite: ^2.0.0+3
-  moor_flutter: any
   
   
 dev_dependencies:
-  moor_generator: ^4.5.1
-  build_runner: ^2.1.1
+  idb_sqflite: any
+
 
   flutter_web_plugins:
     sdk: flutter
