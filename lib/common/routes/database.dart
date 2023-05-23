@@ -2,11 +2,11 @@ import 'package:idb_shim/idb.dart';
 import 'package:idb_shim/idb_browser.dart';
 
 class AppDatabase {
-  late Database _database;
+  late final Database _database;
 
   Future<void> openDatabase() async {
     final idbFactory = getIdbFactory();
-    final database = await idbFactory?.open('data.db', version: 1,
+    var database = await idbFactory?.open('data.db', version: 1,
         onUpgradeNeeded: (VersionChangeEvent event) {
       final db = event.database;
       if (!db.objectStoreNames.contains('todos')) {
@@ -21,6 +21,9 @@ class AppDatabase {
   }
 
   Future<void> insertTodo(Todo todo) async {
+    if (null == _database) {
+      throw Exception("Database is not initialized.");
+    }
     final transaction = _database.transaction('todos', 'readwrite');
     final store = transaction.objectStore('todos');
     await store.add(todo.toMap());
@@ -32,8 +35,9 @@ class AppDatabase {
     final store = transaction.objectStore('todos');
     final records = await store.getAll();
     return (records as List<Map<String, dynamic>>?)
-    ?.map((record) => Todo.fromMap(record))
-    .toList() ?? [];
+            ?.map((record) => Todo.fromMap(record))
+            .toList() ??
+        [];
   }
 
   Future<void> updateTodo(Todo todo) async {
