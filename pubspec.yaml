@@ -8,10 +8,11 @@ environment:
   sdk: '>=2.19.6 <3.0.0'
 
 dependencies:
-  
+  idb_shim: any
   
 dev_dependencies:
   idb_sqflite: any
+  
 
 
   flutter_web_plugins:

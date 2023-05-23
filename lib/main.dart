@@ -14,7 +14,7 @@ void main() async {
 
   runApp(MyApp(database: database));
 
-  // await database.closeDatabase();
+  await database.closeDatabase();
 }
 
 

@@ -73,7 +73,7 @@ packages:
     source: sdk
     version: "0.0.0"
   idb_shim:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: idb_shim
       sha256: e22cbec15c3732ce53ad79927f106e7be7d4a66f836eb6270b51450c15bd7b84

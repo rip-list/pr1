@@ -1,11 +1,8 @@
-// ignore_for_file: unused_import, depend_on_referenced_packages
-import 'dart:developer';
-import 'dart:typed_data';
 import 'package:idb_shim/idb.dart';
 import 'package:idb_shim/idb_browser.dart';
 
 class AppDatabase {
-  Database? _database;
+  late Database _database;
 
   Future<void> openDatabase() async {
     final idbFactory = getIdbFactory();
@@ -16,43 +13,41 @@ class AppDatabase {
         db.createObjectStore('todos', autoIncrement: true);
       }
     });
-    _database = database;
+    _database = database!;
   }
 
   Future<void> closeDatabase() async {
-    _database?.close();
+    _database.close();
   }
-  // вставка значения 
-Future<void> insertTodo(Todo todo) async {
-    final transaction = _database?.transaction('todos', 'readwrite');
-    final store = transaction?.objectStore('todos');
-    await store?.add(todo.toMap());
-    await transaction?.completed;
-    // debugger
-    print("удачно");
+
+  Future<void> insertTodo(Todo todo) async {
+    final transaction = _database.transaction('todos', 'readwrite');
+    final store = transaction.objectStore('todos');
+    await store.add(todo.toMap());
+    await transaction.completed;
   }
-// получения значения 
+
   Future<List<Todo>> getAllTodos() async {
-    final transaction = _database?.transaction('todos', 'readonly');
-    final store = transaction?.objectStore('todos');
-    final records = await store?.getAll();
-   return (records as List<Map<String, dynamic>>?)
+    final transaction = _database.transaction('todos', 'readonly');
+    final store = transaction.objectStore('todos');
+    final records = await store.getAll();
+    return (records as List<Map<String, dynamic>>?)
     ?.map((record) => Todo.fromMap(record))
     .toList() ?? [];
   }
-// обновление значения 
+
   Future<void> updateTodo(Todo todo) async {
-    final transaction = _database?.transaction('todos', 'readwrite');
-    final store = transaction?.objectStore('todos');
-    await store?.put(todo.toMap());
-    await transaction?.completed;
+    final transaction = _database.transaction('todos', 'readwrite');
+    final store = transaction.objectStore('todos');
+    await store.put(todo.toMap());
+    await transaction.completed;
   }
-// удаленние значения
+
   Future<void> deleteTodo(int id) async {
-    final transaction = _database?.transaction('todos', 'readwrite');
-    final store = transaction?.objectStore('todos');
-    await store?.delete(id);
-    await transaction?.completed;
+    final transaction = _database.transaction('todos', 'readwrite');
+    final store = transaction.objectStore('todos');
+    await store.delete(id);
+    await transaction.completed;
   }
 }
 
@@ -76,11 +71,10 @@ class Todo {
   }
 
   static Todo fromMap(Map<String, dynamic> map) {
-  return Todo(
-    id: map['id'] as int?,
-    nickname: map['nickname'] as String,
-    description: map['description'] as String,
-  );
+    return Todo(
+      id: map['id'] as int?,
+      nickname: map['nickname'] as String,
+      description: map['description'] as String,
+    );
+  }
 }
-}
- 

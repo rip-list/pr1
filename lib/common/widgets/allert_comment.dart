@@ -76,7 +76,8 @@ class CommentMsgState extends State<CommentMsg> {
                 await database.insertTodo(newTodo);
                 teDescription.clear();
                 teNickname.clear();
-              print("sdf");
+              // ignore: avoid_print
+                          print(await database.getAllTodos());
               },
               child: const Text('Send'),
             ),
