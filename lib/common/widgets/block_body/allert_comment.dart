@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 // ignore: unused_import
 import 'package:pr1/common/routes/database.dart';
 
-
 class CommentMsg extends StatefulWidget {
   const CommentMsg({super.key});
 
@@ -16,7 +15,7 @@ class CommentMsg extends StatefulWidget {
 class CommentMsgState extends State<CommentMsg> {
   final TextEditingController teNickname = TextEditingController();
   final TextEditingController teDescription = TextEditingController();
-  final database = AppDatabase();
+
   @override
   Widget build(BuildContext context) {
     // ignore: avoid_unnecessary_containers
@@ -67,17 +66,10 @@ class CommentMsgState extends State<CommentMsg> {
             child: ElevatedButton(
               onPressed: () async {
                 // вставка значения в бд
-                final newTodo =Todo(
-                  nickname: teNickname.text,
-                  description: teDescription.text,
-
-                  );
-                  print(teNickname.text);
-                await database.insertTodo(newTodo);
+                sendDataToServer(teNickname.text, teDescription.text);
+                // ignore: avoid_print
                 teDescription.clear();
                 teNickname.clear();
-              // ignore: avoid_print
-                          print(await database.getAllTodos());
               },
               child: const Text('Send'),
             ),

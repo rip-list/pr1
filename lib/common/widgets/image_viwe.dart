@@ -15,7 +15,7 @@ class CusImage extends StatefulWidget {
     super.key,
     required this.url,
     this.radius = 30.0,
-    this.text = "text",
+    required this.text,
   });
 
   @override
@@ -36,13 +36,13 @@ class _CusImageState extends State<CusImage> {
     super.initState();
     url = url;
     radius = 30.0;
-    text = "text";
+    text = text;
   }
 
   _CusImageState({
     required this.url,
     this.radius = 30.0,
-    this.text = "text",
+    required this.text,
   });
   @override
   Widget build(BuildContext context) {
@@ -72,8 +72,8 @@ class _CusImageState extends State<CusImage> {
           // fit: BoxFit.scaleDown,
           image: AssetImage(url),
           color: AppColors.black,
-          height: 64,
-          width: 64,
+          height: 50,
+          width: 50,
         ),
       ),
     );

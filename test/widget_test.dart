@@ -9,15 +9,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:pr1/common/widgets/widget_home.dart';
-import 'package:pr1/common/routes/database.dart';
+// import 'package:pr1/common/routes/database.dart';
+
 void main() {
   testWidgets('Counter increments smoke test', (WidgetTester tester) async {
     // Build our app and trigger a frame.
     // ignore: prefer_typing_uninitialized_variables
-   
-    
-   
-    await tester.pumpWidget(  MyApp(database: AppDatabase(),));
+
+    await tester.pumpWidget(const MyApp());
 
     // Verify that our counter starts at 0.
     expect(find.text('0'), findsOneWidget);

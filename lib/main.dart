@@ -4,17 +4,9 @@ import 'package:pr1/common/routes/database.dart';
 // import 'package:sqflite/sqflite.dart';
 import 'common/widgets/widget_home.dart';
 
-// import "package:moor_flutter/moor_flutter.dart" as moor_flutter;
-
 void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-
-  final database = AppDatabase();
-  await database.openDatabase();
-
-  runApp(MyApp(database: database));
-
-  // await database.closeDatabase();
+  // ignore: unused_local_variable, prefer_const_declarations
+  runApp(const MyApp());
 }
 
 /*

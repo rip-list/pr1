@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:pr1/common/constants/app_colors.dart';
 // ignore: unused_import
 import 'package:pr1/common/widgets/image_viwe.dart';
-import 'allert_comment.dart';
+import 'block_body/allert_comment.dart';
 
 class PreamBody extends StatefulWidget {
   const PreamBody({super.key});
@@ -35,15 +35,18 @@ class PreamBodyState extends State<PreamBody> {
           Row(
             children: const [
               CusImage(
+                text: "GitHub",
                 //  первый блок линк на гитхаб
                 url: "assets/img/github.png",
               ),
               CusImage(
                 // второй блок
+                text: "BIO",
                 url: "assets/img/man.png",
               ),
               CusImage(
                 // третий блок
+                text: "DS link",
                 url: "assets/img/discord.png",
               ),
             ],
@@ -53,15 +56,15 @@ class PreamBodyState extends State<PreamBody> {
             children: const [
               CusImage(
                 // четвёртый блок
-                url: "assets/img/send.png",
+                url: "assets/img/send.png", text: 'TG link',
               ),
               CusImage(
                 // пятый блок
-                url: "assets/img/wallet.png",
+                url: "assets/img/wallet.png", text: 'send me BTC ',
               ),
               CusImage(
                 // шестой блок
-                url: "assets/img/gamepad.png",
+                url: "assets/img/gamepad.png", text: 'my game ',
               ),
             ],
           ),
@@ -70,15 +73,15 @@ class PreamBodyState extends State<PreamBody> {
             children: const [
               CusImage(
                 // седбмой блок
-                url: "assets/img/github.png",
+                url: "assets/img/chat.png ", text: 'comment',
               ),
               CusImage(
                 // восьмой блок
-                url: "assets/img/github.png",
+                url: "assets/img/spotify.png", text: 'my music',
               ),
               CusImage(
                 // девятый блок
-                url: "assets/img/github.png",
+                url: "assets/img/info.png", text: 'project info ',
               ),
             ],
           ),

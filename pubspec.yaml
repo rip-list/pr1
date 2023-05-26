@@ -9,6 +9,7 @@ environment:
 
 dependencies:
   idb_shim: any
+  http: any
   
 dev_dependencies:
   idb_sqflite: any
@@ -35,7 +36,9 @@ flutter:
      - assets/img/send.png
      - assets/img/man.png
      - assets/img/gamepad.png
-  
+     - assets/img/chat.png
+     - assets/img/spotify.png
+     - assets/img/info.png
   fonts:
     - family: Sensal
       fonts:
