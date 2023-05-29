@@ -22,3 +22,20 @@ Future<String?> sendDataToServer(String nickname, String description) async {
     return null;
   }
 }
+
+Future<String?> getDataToServer(String nickname, String description) async {
+  var url = Uri.parse('http://localhost/local_db.php');
+
+  var response = await http.get(url);
+
+  if (response.statusCode == 200) {
+    print('Данные успешно отправлены на сервер');
+    print('Ответ от сервера: ${response.body}');
+    return response.body;
+  } else {
+    print('Ошибка при отправке данных на сервер');
+    print('Статус код: ${response.statusCode}');
+    print('Текст ошибки: ${response.body}');
+    return null;
+  }
+}

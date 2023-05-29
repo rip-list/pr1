@@ -46,34 +46,37 @@ class _CusImageState extends State<CusImage> {
   });
   @override
   Widget build(BuildContext context) {
-    return AlertDialog(
-      title: Text(
-        text,
-        textAlign: TextAlign.center,
-        style: const TextStyle(fontFamily: "Aref"),
-      ),
-      backgroundColor: AppColors.secondary,
-      content: Container(
-        width: 200,
-        height: 200,
-
-        // внешний вид блоков с информацией
-        // TODO надо поменять на кнопку  мб
-        decoration: BoxDecoration(
-          borderRadius: BorderRadiusDirectional.circular(radius),
-          boxShadow: List.empty(growable: true),
-          gradient: const LinearGradient(
-            end: Alignment.topRight,
-            begin: Alignment.bottomLeft,
-            colors: [AppColors.blue, AppColors.violet],
-          ),
+    return GestureDetector(
+      onTap: () {},
+      child: AlertDialog(
+        title: Text(
+          text,
+          textAlign: TextAlign.center,
+          style: const TextStyle(fontFamily: "Aref"),
         ),
-        child: Image(
-          // fit: BoxFit.scaleDown,
-          image: AssetImage(url),
-          color: AppColors.black,
-          height: 50,
-          width: 50,
+        backgroundColor: AppColors.secondary,
+        content: Container(
+          width: 200,
+          height: 200,
+
+          // внешний вид блоков с информацией
+          // TODO надо поменять на кнопку  мб
+          decoration: BoxDecoration(
+            borderRadius: BorderRadiusDirectional.circular(radius),
+            boxShadow: List.empty(growable: true),
+            gradient: const LinearGradient(
+              end: Alignment.topRight,
+              begin: Alignment.bottomLeft,
+              colors: [AppColors.blue, AppColors.violet],
+            ),
+          ),
+          child: Image(
+            // fit: BoxFit.scaleDown,
+            image: AssetImage(url),
+            color: AppColors.black,
+            height: 50,
+            width: 50,
+          ),
         ),
       ),
     );
