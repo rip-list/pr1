@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 // ignore: unused_import
 import 'package:pr1/common/constants/app_colors.dart';
+import 'package:pr1/common/widgets/block_body/comment_list.dart';
 // ignore: unused_import
 import 'package:pr1/common/widgets/image_viwe.dart';
 import 'block_body/allert_comment.dart';
@@ -85,7 +86,8 @@ class PreamBodyState extends State<PreamBody> {
               ),
             ],
           ),
-          const CommentMsg()
+          const CommentMsg(),
+          MyWidget()
         ],
       ),
     );
