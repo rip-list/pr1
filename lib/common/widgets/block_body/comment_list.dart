@@ -49,7 +49,7 @@ class _MyWidgetState extends State<MyWidget> {
   Widget build(BuildContext context) {
     return Container(
       color: AppColors.white,
-      height: 50,
+      height: 300,
       width: 400,
       child: Text(data), // Используйте полученные данные здесь
     );
