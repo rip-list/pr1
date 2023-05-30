@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:pr1/common/constants/app_colors.dart';
+import 'package:pr1/common/routes/database.dart';
 
 class MyWidget extends StatefulWidget {
+  const MyWidget({super.key});
+
   @override
   _MyWidgetState createState() => _MyWidgetState();
 }
@@ -13,37 +16,10 @@ class _MyWidgetState extends State<MyWidget> {
   @override
   void initState() {
     super.initState();
-    fetchData(); // Вызов функции для получения данных при инициализации виджета
+   String dic =  getdescriptionSpecificDataFromServer(); 
   }
 
-  Future<void> fetchData() async {
-    try {
-      String result = await getSpecificDataFromServer(
-          "valera"); // Замените "valera" на нужное значение
-      setState(() {
-        data = result; // Обновление значения 'data' и обновление UI
-      });
-    } catch (e) {
-      print('Ошибка: $e');
-    }
-  }
-
-  Future<String> getSpecificDataFromServer(String nickname) async {
-    var url = Uri.parse('http://localhost/local_db.php?id=$nickname');
-
-    var response = await http.get(url);
-
-    if (response.statusCode == 200) {
-      print('Данные успешно получены с сервера');
-      print('Ответ от сервера: ${response.body}');
-      return response.body;
-    } else {
-      print('Ошибка при получении данных с сервера');
-      print('Статус код: ${response.statusCode}');
-      print('Текст ошибки: ${response.body}');
-      throw Exception('Ошибка при получении данных с сервера');
-    }
-  }
+  
 
   @override
   Widget build(BuildContext context) {
@@ -51,7 +27,18 @@ class _MyWidgetState extends State<MyWidget> {
       color: AppColors.white,
       height: 300,
       width: 400,
-      child: Text(data), // Используйте полученные данные здесь
+      child: ListView(
+  children: const <Widget>[
+    ListTile(
+      leading: Icon(Icons.account_circle_sharp),
+      title: Text('Nickname'),
+    ),
+    ListTile(
+      leading: Icon(Icons.article_sharp),
+      title: Text('Description'),
+    ),
+  ],
+),
     );
   }
 }

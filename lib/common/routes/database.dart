@@ -23,7 +23,7 @@ Future<String?> sendDataToServer(String nickname, String description) async {
   }
 }
 
-Future<String?> getAllDataFromServer(String nickname) async {
+Future<String> getnicknameDataFromServer(String nickname) async {
   var url = Uri.parse(
       'http://localhost/local_db.php?nickname=$nickname'); // Обновленный URL с параметром id
 
@@ -37,13 +37,13 @@ Future<String?> getAllDataFromServer(String nickname) async {
     print('Ошибка при получении данных с сервера');
     print('Статус код: ${response.statusCode}');
     print('Текст ошибки: ${response.body}');
-    return null;
+    throw("");
   }
 }
 
-Future<String> getSpecificDataFromServer(String nickname) async {
+Future<String> getdescriptionSpecificDataFromServer() async {
   var url = Uri.parse(
-      'http://localhost/local_db.php?id=$nickname'); // Обновленный URL с параметром id
+      'http://localhost/local_db.php?description'); // Обновленный URL с параметром id
 
   var response = await http.get(url);
 
