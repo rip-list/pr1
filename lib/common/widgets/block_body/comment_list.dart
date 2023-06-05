@@ -16,7 +16,7 @@ class _MyWidgetState extends State<MyWidget> {
   @override
   void initState() {
     super.initState();
-   String dic =  getdescriptionSpecificDataFromServer(); 
+  //  String dic =  getdescriptionSpecificDataFromServer(); 
   }
 
   
