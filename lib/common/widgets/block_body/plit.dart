@@ -1,6 +1,6 @@
 // ignore: depend_on_referenced_packages
 // ignore: unused_import, depend_on_referenced_packages
-// ignore_for_file: no_logic_in_create_state
+// ignore_for_file: no_logic_in_create_state, prefer_typing_uninitialized_variables
 
 
 
@@ -8,37 +8,39 @@
 import 'package:flutter/material.dart';
 // ignore: unused_import
 import 'package:pr1/common/constants/app_colors.dart';
-import 'package:url_launcher/url_launcher.dart';
-class CusImage extends StatefulWidget {
+// import 'package:url_launcher/url_launcher.dart';
+class CusPlite extends StatefulWidget {
   final String url;
   final double radius;
   final String text;
-  final String urlsite;
-  const CusImage({
+  final page;
+
+
+   const CusPlite({
     Key? key,
     required this.url,
     this.radius = 30.0,
-    required this.text, required this.urlsite,
+    required this.text, required this.page,  
   }) : super(key: key);
 
   @override
-  State<CusImage> createState() => _CusImageState(
+  State<CusPlite> createState() => _CusPliteState(
         url: url,
         radius: radius,
         text: text,
-        urlsite:urlsite,
+        page:page
       );
 }
 
-class _CusImageState extends State<CusImage> {
+class _CusPliteState extends State<CusPlite> {
   late String url;
   late double radius;
   late String text;
-  late String urlsite;
-  _CusImageState({
+  final page;
+  _CusPliteState({
     required this.url,
     this.radius = 30.0,
-    required this.text, required  this.urlsite,
+    required this.text, required this.page, 
   });
   
   @override
@@ -47,21 +49,20 @@ class _CusImageState extends State<CusImage> {
     url = widget.url;
     radius = widget.radius;
     text = widget.text;
-    urlsite = widget.urlsite;
+    
   }
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
      onTap: () async {
-       Uri urlpars;
-urlpars = Uri.parse(urlsite);
-        if (await canLaunchUrl(urlpars)) {
-          await launchUrl(urlpars);
-        } else {
-          throw 'Could not launch $url';
-        }
-      },
+  
+  Navigator.push(
+    context,
+    MaterialPageRoute(builder: (context) => page),
+  );
+},
+      
       child: AlertDialog(
         title: Text(
           text,

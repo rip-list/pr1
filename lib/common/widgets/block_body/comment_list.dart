@@ -1,16 +1,17 @@
-import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
+// ignore: depend_on_referenced_packages
+import 'package:flutter/material.dart' ;
+// import 'package:http/http.dart' as http;
 import 'package:pr1/common/constants/app_colors.dart';
 import 'package:pr1/common/routes/database.dart';
 
-class MyWidget extends StatefulWidget {
-  const MyWidget({super.key});
+class CommList extends StatefulWidget {
+  const CommList({super.key});
 
   @override
-  _MyWidgetState createState() => _MyWidgetState();
+ CommListState createState() => CommListState();
 }
 
-class _MyWidgetState extends State<MyWidget> {
+class CommListState extends State<CommList> {
   String data = ''; // Переменная для хранения полученных данных
 
   @override
@@ -28,14 +29,14 @@ class _MyWidgetState extends State<MyWidget> {
       height: 300,
       width: 400,
       child: ListView(
-  children: const <Widget>[
+  children:  <Widget>[
     ListTile(
-      leading: Icon(Icons.account_circle_sharp),
-      title: Text('Nickname'),
+      leading: const Icon(Icons.account_circle_sharp),
+      title: Text(getnicknameDataFromServer("valera") as String),
     ),
     ListTile(
-      leading: Icon(Icons.article_sharp),
-      title: Text('Description'),
+      leading:const  Icon(Icons.article_sharp),
+      title: Text(getdescriptionSpecificDataFromServer() as String),
     ),
   ],
 ),

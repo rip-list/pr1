@@ -1,7 +1,5 @@
 // ignore: depend_on_referenced_packages
 import 'package:flutter/material.dart';
-import 'package:pr1/common/routes/database.dart';
-// import 'package:sqflite/sqflite.dart';
 import 'common/widgets/widget_home.dart';
 
 void main() async {

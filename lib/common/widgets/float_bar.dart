@@ -3,12 +3,15 @@ import 'package:flutter/material.dart';
 import 'package:pr1/common/constants/app_colors.dart';
 import 'package:pr1/common/usr_function/function.dart';
 // import 'package:pr1/common/constants/main_button.dart';
-import 'pream_body.dart';
+// import 'pream_body.dart';
 // import 'package:pr1/common/constants/my_flutter_app_icons.dart';
 
 class FloatBar extends StatelessWidget {
-  const FloatBar({super.key});
-
+ final body ;
+  const FloatBar(
+     
+    {super.key, this.body });
+  
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -33,7 +36,7 @@ class FloatBar extends StatelessWidget {
               delegate: SliverChildBuilderDelegate(
                 (BuildContext context, int index) =>
                     // ignore: prefer_const_constructors
-                    PreamBody(),
+                   body, //TODO конструктор боди
                 childCount: 1,
               ),
             )

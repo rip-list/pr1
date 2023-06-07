@@ -7,5 +7,5 @@
     "dart.flutterRunAdditionalArgs": [
         "--no-sound-null-safety"
     ],
-    "cmake.sourceDirectory": "C:/Users/hostPE/Desktop/flut_prod/pr1/windows/flutter"
+    "cmake.sourceDirectory": "C:/Users/403-3/Documents/GitHub/pr1/windows/flutter"
 }
