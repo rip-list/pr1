@@ -1,3 +1,4 @@
+// ignore: depend_on_referenced_packages
 import 'package:flutter/material.dart';
 import 'package:pr1/common/routes/spotify_service.dart';
 

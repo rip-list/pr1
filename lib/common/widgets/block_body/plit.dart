@@ -1,92 +1,97 @@
-// ignore: depend_on_referenced_packages
-// ignore: unused_import, depend_on_referenced_packages
-// ignore_for_file: no_logic_in_create_state, prefer_typing_uninitialized_variables
-
-
-
-// ignore: depend_on_referenced_packages
 import 'package:flutter/material.dart';
-// ignore: unused_import
-import 'package:pr1/common/constants/app_colors.dart';
-// import 'package:url_launcher/url_launcher.dart';
+
+
+import '../../constants/app_colors.dart';
+
 class CusPlite extends StatefulWidget {
   final String url;
   final double radius;
   final String text;
-  final page;
+  final Widget page;
 
-
-   const CusPlite({
+  const CusPlite({
     Key? key,
     required this.url,
     this.radius = 30.0,
-    required this.text, required this.page,  
+    required this.text,
+    required this.page,
   }) : super(key: key);
 
   @override
-  State<CusPlite> createState() => _CusPliteState(
-        url: url,
-        radius: radius,
-        text: text,
-        page:page
-      );
+  CusPliteState createState() => CusPliteState();
 }
 
-class _CusPliteState extends State<CusPlite> {
-  late String url;
-  late double radius;
-  late String text;
-  final page;
-  _CusPliteState({
-    required this.url,
-    this.radius = 30.0,
-    required this.text, required this.page, 
-  });
-  
+class CusPliteState extends State<CusPlite> {
+  late bool isHovered;
+
   @override
   void initState() {
     super.initState();
-    url = widget.url;
-    radius = widget.radius;
-    text = widget.text;
-    
+    isHovered = false;
   }
+
+  
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-     onTap: () async {
-  
-  Navigator.push(
-    context,
-    MaterialPageRoute(builder: (context) => page),
-  );
-},
-      
-      child: AlertDialog(
-        title: Text(
-          text,
-          textAlign: TextAlign.center,
-          style: const TextStyle(fontFamily: "Aref"),
-        ),
-        backgroundColor: AppColors.secondary,
-        content: Container(
-          width: 200,
-          height: 200,
+    return MouseRegion(
+      onEnter: (event) {
+        setState(() {
+          isHovered = true;
+        });
+      },
+      onExit: (event) {
+        setState(() {
+          isHovered = false;
+        });
+      },
+      child: GestureDetector(
+        onTap: ()async{
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => widget.page),
+          );
+        },
+        child: Container(
+          width: 300,
+          height: 300,
           decoration: BoxDecoration(
-            borderRadius: BorderRadiusDirectional.circular(radius),
-            boxShadow: const [],
+            borderRadius: BorderRadius.circular(widget.radius),
+            boxShadow: isHovered
+                ? [
+                    BoxShadow(
+                      color: Colors.grey.withOpacity(0.5),
+                      spreadRadius: 2,
+                      blurRadius: 5,
+                      offset: const Offset(0, 2),
+                    ),
+                  ]
+                : [],
             gradient: const LinearGradient(
               end: Alignment.topRight,
               begin: Alignment.bottomLeft,
-              colors: [AppColors.blue, AppColors.violet],
+              colors: [Colors.blue, AppColors.violet],
             ),
           ),
-          child: Image(
-            image: AssetImage(url),
-            color: AppColors.black,
-            height: 50,
-            width: 50,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Transform.scale(
+                scale: isHovered ? 1.1 : 1.0,
+                child: Image(
+                  image: AssetImage(widget.url),
+                  color: Colors.black,
+                  height: isHovered ? 80 : 70,
+                  width: isHovered ? 80 : 70,
+                ),
+              ),
+              const SizedBox(height: 10),
+              Text(
+                widget.text,
+                textAlign: TextAlign.center,
+                style: const TextStyle(fontFamily: "Aref"),
+              ),
+            ],
           ),
         ),
       ),

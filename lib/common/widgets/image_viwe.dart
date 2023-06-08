@@ -1,91 +1,97 @@
-// ignore: depend_on_referenced_packages
-// ignore: unused_import, depend_on_referenced_packages
-// ignore_for_file: no_logic_in_create_state
-
-
-
-// ignore: depend_on_referenced_packages
 import 'package:flutter/material.dart';
-// ignore: unused_import
-import 'package:pr1/common/constants/app_colors.dart';
 import 'package:url_launcher/url_launcher.dart';
+
+import '../constants/app_colors.dart';
+
 class CusImage extends StatefulWidget {
   final String url;
   final double radius;
   final String text;
   final String urlsite;
+
   const CusImage({
     Key? key,
     required this.url,
     this.radius = 30.0,
-    required this.text, required this.urlsite,
+    required this.text,
+    required this.urlsite,
   }) : super(key: key);
 
   @override
-  State<CusImage> createState() => _CusImageState(
-        url: url,
-        radius: radius,
-        text: text,
-        urlsite:urlsite,
-      );
+  State<CusImage> createState() => _CusImageState();
 }
 
 class _CusImageState extends State<CusImage> {
-  late String url;
-  late double radius;
-  late String text;
-  late String urlsite;
-  _CusImageState({
-    required this.url,
-    this.radius = 30.0,
-    required this.text, required  this.urlsite,
-  });
-  
+  late bool isHovered;
+
   @override
   void initState() {
     super.initState();
-    url = widget.url;
-    radius = widget.radius;
-    text = widget.text;
-    urlsite = widget.urlsite;
+    isHovered = false;
+  }
+
+  Future<void> launchURL(String url) async {
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else {
+      throw 'Could not launch $url';
+    }
   }
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-     onTap: () async {
-       Uri urlpars;
-urlpars = Uri.parse(urlsite);
-        if (await canLaunchUrl(urlpars)) {
-          await launchUrl(urlpars);
-        } else {
-          throw 'Could not launch $url';
-        }
+    return MouseRegion(
+      onEnter: (event) {
+        setState(() {
+          isHovered = true;
+        });
       },
-      child: AlertDialog(
-        title: Text(
-          text,
-          textAlign: TextAlign.center,
-          style: const TextStyle(fontFamily: "Aref"),
-        ),
-        backgroundColor: AppColors.secondary,
-        content: Container(
-          width: 200,
-          height: 200,
+      onExit: (event) {
+        setState(() {
+          isHovered = false;
+        });
+      },
+      child: GestureDetector(
+        onTap: () async {
+          await launchURL(widget.urlsite);
+        },
+        child: Container(
+          width: 300,
+          height: 300,
           decoration: BoxDecoration(
-            borderRadius: BorderRadiusDirectional.circular(radius),
-            boxShadow: const [],
+            borderRadius: BorderRadius.circular(widget.radius),
+            boxShadow: isHovered
+                ? [
+                    BoxShadow(
+                      color: AppColors.grey.withOpacity(0.5),
+                      spreadRadius: 2,
+                      blurRadius: 5,
+                      offset: const Offset(0, 2),
+                    ),
+                  ]
+                : [],
             gradient: const LinearGradient(
               end: Alignment.topRight,
               begin: Alignment.bottomLeft,
               colors: [AppColors.blue, AppColors.violet],
             ),
           ),
-          child: Image(
-            image: AssetImage(url),
-            color: AppColors.black,
-            height: 50,
-            width: 50,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Image(
+                image: AssetImage(widget.url),
+                color: Colors.black,
+                height: isHovered ? 80 : 50,
+                width: isHovered ? 80 : 50,
+              ),
+              const SizedBox(height: 10),
+              Text(
+                widget.text,
+                textAlign: TextAlign.center,
+                style: const TextStyle(fontFamily: "Aref"),
+              ),
+            ],
           ),
         ),
       ),

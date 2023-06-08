@@ -35,6 +35,7 @@ class PreamBodyState extends State<PreamBody> {
       fit: BoxFit.scaleDown,
       child: Column(
         children: [
+          SizedBox(height: 100, ),
           // первый ряд
           Row(
             children:  [
@@ -42,30 +43,32 @@ class PreamBodyState extends State<PreamBody> {
                 text: "GitHub",
                 //  первый блок линк на гитхаб
                 url: "assets/img/github.png", urlsite: "https://github.com/rip-list",
-              ),
+              ),SizedBox(width: 60, ),
              CusPlite(
                 // второй блок
                 text: "BIO",
                 url: "assets/img/man.png",  page: Bio(),
-              ),
+              ),SizedBox(width: 60, ),
               CusImage(
                 // третий блок
                 text: "DS link",
-                url: "assets/img/discord.png", urlsite: "gr",
+                url: "assets/img/discord.png", urlsite: "https://discordapp.com/users/730973396783071264/",
               ),
             ],
           ),
+          SizedBox(height: 60, ),
           // второй ряд
           Row(
             children: [
               CusImage(
                 // четвёртый блок
-                url: "assets/img/send.png", text: 'TG link', urlsite: "",
+                url: "assets/img/send.png", text: 'TG link', urlsite: "https://t.me/user_i3wm",
               ),
+              SizedBox(width: 60, ),
               CusImage(
                 // пятый блок
                 url: "assets/img/wallet.png", text: 'send me BTC ', urlsite: "",
-              ),
+              ),SizedBox(width: 60, ),
               CusImage(
                 // шестой блок
                 url: "assets/img/gamepad.png", text: 'my game ', urlsite: "",
@@ -73,22 +76,25 @@ class PreamBodyState extends State<PreamBody> {
             ],
           ),
           // третий ряд
+          SizedBox(height: 60, ),
           Row(
             children: [
               CusImage(
                 // седбмой блок
-                url: "assets/img/chat.png ", text: 'comment', urlsite: '',
-              ),
+                url: "assets/img/chat.png", text: 'comment', urlsite: '',
+              ),SizedBox(width: 60, ),
               CusPlite(
                 // восьмой блок
                 url: "assets/img/spotify.png", text: 'my music', page: Spotify(),
               ),
+              SizedBox(width: 60, ),
               CusImage(
                 // девятый блок
                 url: "assets/img/info.png", text: 'project info \n Comming Soon ', urlsite: "https://github.com/rip-list/pr1",
               ),
             ],
           ),
+          SizedBox(width: 100, ),
           CommentMsg(),
           
         ],

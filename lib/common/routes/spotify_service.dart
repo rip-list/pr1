@@ -2,7 +2,7 @@ import 'package:flutter_web_auth/flutter_web_auth.dart';
 import 'package:spotify_sdk/spotify_sdk.dart';
 
 Future<String?> authenticateWithSpotify() async {
-  const redirectUri = 'pr1://callback'; // Замените на свой URI перенаправления
+  const redirectUri = 'http://example.com/callback'; // Замените на свой URI перенаправления
   const clientId = '4a52d34d78734840953573040f8bfa13'; // Замените на свой Client ID из Spotify Developer Dashboard
 
   final authResult = await FlutterWebAuth.authenticate(

@@ -7,6 +7,7 @@ import 'package:pr1/common/usr_function/function.dart';
 // import 'package:pr1/common/constants/my_flutter_app_icons.dart';
 
 class FloatBar extends StatelessWidget {
+ // ignore: prefer_typing_uninitialized_variables
  final body ;
   const FloatBar(
      
