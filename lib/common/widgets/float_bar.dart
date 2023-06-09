@@ -2,51 +2,87 @@
 import 'package:flutter/material.dart';
 import 'package:pr1/common/constants/app_colors.dart';
 import 'package:pr1/common/usr_function/function.dart';
-// import 'package:pr1/common/constants/main_button.dart';
-// import 'pream_body.dart';
-// import 'package:pr1/common/constants/my_flutter_app_icons.dart';
+// import 'package:pr1/common/widgets/tetris.dart';
 
-class FloatBar extends StatelessWidget {
- // ignore: prefer_typing_uninitialized_variables
- final body ;
-  const FloatBar(
-     
-    {super.key, this.body });
-  
+class FloatBar extends StatefulWidget {
+  final Widget body;
+
+  const FloatBar({Key? key, required this.body}) : super(key: key);
+
+  @override
+  _FloatBarState createState() => _FloatBarState();
+}
+
+class _FloatBarState extends State<FloatBar> with SingleTickerProviderStateMixin {
+  late AnimationController _animationController;
+  late Animation<Color?> _colorAnimation;
+
+  @override
+  void initState() {
+    super.initState();
+    _animationController = AnimationController(
+      duration: const Duration(seconds: 5),
+      vsync: this,
+    )..repeat(reverse: true);
+
+    final darkColors = [
+      Colors.indigo,
+      Colors.deepPurple,
+      Colors.purple[700],
+      Colors.blueGrey[700],
+      Colors.deepOrange[900],
+      Colors.teal[700],
+      Colors.brown,
+      Colors.red
+    ];
+
+    _colorAnimation = _animationController.drive(
+      ColorTween(begin: darkColors[0], end: darkColors[7]),
+    );
+  }
+
+  @override
+  void dispose() {
+    _animationController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child: Material(
-        color: AppColors.primary,
-        child: CustomScrollView(
-          slivers: [
-            SliverPersistentHeader(
-              delegate: MySliverAppBar(
-                expandedHeight: MediaQuery.of(context).size.height,
-                assetsPath: "assets/img/img_home_page.jpg",
-              ),
-              pinned: true,
+      child: AnimatedBuilder(
+        animation: _colorAnimation,
+        builder: (context, child) {
+          return Material(
+            color: _colorAnimation.value,
+            child: CustomScrollView(
+              slivers: [
+                SliverPersistentHeader(
+                  delegate: MySliverAppBar(
+                    expandedHeight: MediaQuery.of(context).size.height,
+                    assetsPath: "assets/img/img_home_page.jpg",
+                  ),
+                  pinned: true,
+                ),
+                SliverGrid(
+                  gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+                    maxCrossAxisExtent: 1500.0,
+                    crossAxisSpacing: 40.0,
+                  ),
+                  delegate: SliverChildBuilderDelegate(
+                    (BuildContext context, int index) => widget.body,
+                    childCount: 1,
+                  ),
+                )
+              ],
             ),
-            // TODO скрол находится тут
-            SliverGrid(
-              gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-                maxCrossAxisExtent: 1500.0,
-                crossAxisSpacing: 40.0,
-                // mainAxisSpacing: 450,
-              ),
-              delegate: SliverChildBuilderDelegate(
-                (BuildContext context, int index) =>
-                    // ignore: prefer_const_constructors
-                   body, //TODO конструктор боди
-                childCount: 1,
-              ),
-            )
-          ],
-        ),
+          );
+        },
       ),
     );
   }
 }
+
 
 class MySliverAppBar extends SliverPersistentHeaderDelegate {
   final double expandedHeight;

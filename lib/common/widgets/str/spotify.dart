@@ -1,7 +1,7 @@
 // ignore: depend_on_referenced_packages
 import 'package:flutter/material.dart';
 import 'package:pr1/common/routes/spotify_service.dart';
-
+import '../../constants/app_colors.dart';
 
 
 class Spotify extends StatelessWidget {
@@ -13,11 +13,13 @@ class Spotify extends StatelessWidget {
       title: 'play',
       home: Scaffold(
         appBar: AppBar(
-          title: const Text('Material App Bar'),
+          backgroundColor: AppColors.transparentblue, 
+          title: const Text('Spotify'),
         ),
         body: const Center(
           child: IconButton(onPressed: authenticateWithSpotify, icon: Icon(Icons.airline_seat_legroom_reduced))
         ),
+        backgroundColor: AppColors.secondary,
       ),
     );
   }

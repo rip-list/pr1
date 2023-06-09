@@ -31,8 +31,9 @@ class _CusImageState extends State<CusImage> {
   }
 
   Future<void> launchURL(String url) async {
-    if (await canLaunch(url)) {
-      await launch(url);
+    Uri urls = Uri.parse(url);
+    if (await canLaunchUrl(urls)) {
+      await launchUrl(urls);
     } else {
       throw 'Could not launch $url';
     }

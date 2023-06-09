@@ -7,6 +7,7 @@ import 'package:pr1/common/widgets/block_body/plit.dart';
 // ignore: unused_import
 import 'package:pr1/common/widgets/image_viwe.dart';
 import 'package:pr1/common/widgets/str/bio.dart';
+import 'package:pr1/common/widgets/str/game.dart';
 import 'package:pr1/common/widgets/str/spotify.dart';
 import 'block_body/allert_comment.dart';
 
@@ -69,9 +70,9 @@ class PreamBodyState extends State<PreamBody> {
                 // пятый блок
                 url: "assets/img/wallet.png", text: 'send me BTC ', urlsite: "",
               ),SizedBox(width: 60, ),
-              CusImage(
+              CusPlite(
                 // шестой блок
-                url: "assets/img/gamepad.png", text: 'my game ', urlsite: "",
+                url: "assets/img/gamepad.png", text: 'my game ', page: Game(),
               ),
             ],
           ),
