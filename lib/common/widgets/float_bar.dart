@@ -50,6 +50,7 @@ class _FloatBarState extends State<FloatBar> with SingleTickerProviderStateMixin
   @override
   Widget build(BuildContext context) {
     return SafeArea(
+      
       child: AnimatedBuilder(
         animation: _colorAnimation,
         builder: (context, child) {
@@ -128,7 +129,7 @@ class MySliverAppBar extends SliverPersistentHeaderDelegate {
                     color: AppColors.white,
                     fontWeight: FontWeight.w700,
                   ), //TODO меняй потом на конструктор или нет, хз
-                  "This site create server developer, plz, don`t hate ass it project ",
+                  "This site create server developer, plz, don`t hate it project ",
                   textAlign: TextAlign.left,
                 ),
               ),
