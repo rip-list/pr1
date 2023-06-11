@@ -14,4 +14,5 @@ class AppColors {
   static const Color black = Color.fromARGB(255, 0, 0, 0);
   static const Color transparentblue = Color.fromARGB(46, 20, 188, 230);
   static const Color transparentpol = Color.fromARGB(150, 0, 0, 0);
+  static const Color transparentwhite = Color.fromARGB(50, 255, 255, 255);
 }

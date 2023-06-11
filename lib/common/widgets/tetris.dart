@@ -1,3 +1,5 @@
+// ignore_for_file: depend_on_referenced_packages
+
 import 'dart:async';
 import 'dart:math';
 import 'package:flutter/material.dart';
@@ -31,7 +33,7 @@ class TetrisGameState extends State<TetrisGame> {
       });
     });
 
-    currentBlockPosition = Point<int>(2, 0);
+    currentBlockPosition = const Point<int>(2, 0);
     currentBlockColor = Colors.blue;
 
     FocusScope.of(context).requestFocus();

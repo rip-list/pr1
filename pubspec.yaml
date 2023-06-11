@@ -10,16 +10,17 @@ environment:
 dependencies:
   idb_shim: any
   http: any
-  build_runner: ^2.4.0
+  build_runner: any
   url_launcher: ^6.0.0
   flutter_web_auth: any
   spotify_sdk: ^2.0.0
+  flutter_inappwebview: ^5.0.0
 
 
   
 dev_dependencies:
   idb_sqflite: any
-  build_web_compilers: ^4.0.0
+  build_web_compilers: any
   
 
 

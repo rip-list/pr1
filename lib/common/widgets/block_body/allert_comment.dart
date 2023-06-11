@@ -25,6 +25,17 @@ class CommentMsgState extends State<CommentMsg> {
       color: AppColors.transparentblue,
       child: Column(
         children: [
+const SizedBox(
+            width: 40,
+            height: 40,
+          ),
+
+          const Text("Вы можете оставить свой комментарий \n    о этом сайте  в даном поле ", style: TextStyle( fontFamily: "Sensal"), ),
+          
+          const SizedBox(
+            width: 40,
+            height: 40,
+          ),
           TextField(
             // никнейм
             controller: teNickname,
@@ -53,6 +64,10 @@ class CommentMsgState extends State<CommentMsg> {
                 ),
               ),
             ),
+          ),
+           const SizedBox(
+            width: 40,
+            height: 40,
           ),
           Container(
             width: 300,
