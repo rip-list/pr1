@@ -69,7 +69,7 @@ class PreamBodyState extends State<PreamBody> {
               SizedBox(width: 60, ),
               CusPlite(
                 // пятый блок
-                url: "assets/img/wallet.png", text: 'send me BTC ', page: WebViewWidget(),
+                url: "assets/img/wallet.png", text: 'send me BTC ', page: DonatUI(),
               ),SizedBox(width: 60, ),
               CusPlite(
                 // шестой блок
