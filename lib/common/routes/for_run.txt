@@ -1,2 +1,3 @@
 flutter pub global activate webdev
 flutter pub global run webdev serve --auto restart
+https://account.nowpayments.io/sign-in

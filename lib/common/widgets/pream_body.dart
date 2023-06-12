@@ -7,6 +7,7 @@ import 'package:pr1/common/widgets/block_body/plit.dart';
 // ignore: unused_import
 import 'package:pr1/common/widgets/image_viwe.dart';
 import 'package:pr1/common/widgets/str/bio.dart';
+import 'package:pr1/common/widgets/str/comment_list.dart';
 import 'package:pr1/common/widgets/str/donat.dart';
 import 'package:pr1/common/widgets/str/game.dart';
 import 'package:pr1/common/widgets/str/spotify.dart';
@@ -33,14 +34,14 @@ class PreamBodyState extends State<PreamBody> {
 
   @override
   Widget build(BuildContext context) {
-    return  FittedBox(
+    return  const FittedBox(
       fit: BoxFit.scaleDown,
       child: Column(
         children: [
-          const SizedBox(height: 100, ),
+          SizedBox(height: 100, ),
           // первый ряд
           Row(
-            children:  const [
+            children:  [
              CusImage(
                 text: "GitHub",
                 //  первый блок линк на гитхаб
@@ -58,10 +59,10 @@ class PreamBodyState extends State<PreamBody> {
               ),
             ],
           ),
-          const SizedBox(height: 60, ),
+          SizedBox(height: 60, ),
           // второй ряд
           Row(
-            children: const [
+            children: [
               CusImage(
                 // четвёртый блок
                 url: "assets/img/send.png", text: 'TG link', urlsite: "https://t.me/user_i3wm",
@@ -69,7 +70,7 @@ class PreamBodyState extends State<PreamBody> {
               SizedBox(width: 60, ),
               CusPlite(
                 // пятый блок
-                url: "assets/img/wallet.png", text: 'send me BTC ', page: WebViewWidget(),
+                url: "assets/img/wallet.png", text: 'send me BTC ', page:DonatUI()
               ),SizedBox(width: 60, ),
               CusPlite(
                 // шестой блок
@@ -78,12 +79,12 @@ class PreamBodyState extends State<PreamBody> {
             ],
           ),
           // третий ряд
-          const SizedBox(height: 60, ),
+          SizedBox(height: 60, ),
           Row(
-            children: const [
-              CusImage(
+            children: [
+              CusPlite(
                 // седбмой блок
-                url: "assets/img/chat.png", text: 'comment', urlsite: '',
+                url: "assets/img/chat.png", text: 'comment', page: CommentWidget(),
               ),SizedBox(width: 60, ),
               CusPlite(
                 // восьмой блок
@@ -96,8 +97,8 @@ class PreamBodyState extends State<PreamBody> {
               ),
             ],
           ),
-          const SizedBox(width: 100, ),
-          const CommentMsg(),
+          SizedBox(width: 100, ),
+          CommentMsg(),
           
         ],
       ),

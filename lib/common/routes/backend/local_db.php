@@ -1,9 +1,5 @@
 <?php
 
-// Получение данных из POST-запроса
-$nickname = $_POST['nickname'];
-$description = $_POST['description'];
-
 // Подключение к базе данных
 $servername = "localhost";
 $username = "root";
@@ -17,13 +13,33 @@ if ($conn->connect_error) {
     die("Ошибка подключения к базе данных: " . $conn->connect_error);
 }
 
-// Вставка данных в таблицу
-$sql = "INSERT INTO comment (nickname, description) VALUES ('$nickname', '$description')";
+// Получение данных из базы данных
+$sql = "SELECT nickname, description FROM comment";
+$result = $conn->query($sql);
 
-if ($conn->query($sql) === TRUE) {
-    echo "Данные успешно добавлены в базу данных";
+if ($result->num_rows > 0) {
+    $comments = array();
+    while ($row = $result->fetch_assoc()) {
+        $nickname = $row['nickname'];
+        $description = $row['description'];
+
+        // Добавление данных в массив
+        $comments[] = array(
+            'nickname' => $nickname,
+            'description' => $description
+        );
+    }
+
+    // Преобразование массива в JSON
+    $jsonComments = json_encode($comments);
+
+    // Установка заголовка ответа в формате JSON
+    header('Content-Type: application/json');
+
+    // Вывод данных в формате JSON
+    echo $jsonComments;
 } else {
-    echo "Ошибка при добавлении данных: " . $conn->error;
+    echo "Нет доступных комментариев";
 }
 
 // Закрытие соединения с базой данных

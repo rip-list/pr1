@@ -25,16 +25,22 @@ class Bio extends StatelessWidget {
            ),
       body:Container( color: AppColors.secondary,
         child: Column( children: [
-          Row( 
-            children: [ 
-              Container(
-                height: 50,
-                width: 50,
-                 color: AppColors.transparentwhite,
-                  child: const Center(child: Text("Мразь j,sryjdtyyfz")),
-                  ),
-                  ],
-                  ),
+
+          Center(
+            child: Row( 
+              children: [ 
+                
+                Center(
+                  child: Container(
+                    height: 500,
+                    width: 500,
+                     color: AppColors.transparentwhite,
+                      child: const Center(child: Text("Мразь j,sryjdtyyfz", style: TextStyle(fontSize: 70),)),
+                      ),
+                ),
+                    ],
+                    ),
+          ),
               ],
                ),
       ),
