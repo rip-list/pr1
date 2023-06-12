@@ -7,6 +7,7 @@ import 'package:pr1/common/widgets/block_body/plit.dart';
 // ignore: unused_import
 import 'package:pr1/common/widgets/image_viwe.dart';
 import 'package:pr1/common/widgets/str/bio.dart';
+import 'package:pr1/common/widgets/str/comment_list.dart';
 import 'package:pr1/common/widgets/str/donat.dart';
 import 'package:pr1/common/widgets/str/game.dart';
 import 'package:pr1/common/widgets/str/spotify.dart';
@@ -33,7 +34,7 @@ class PreamBodyState extends State<PreamBody> {
 
   @override
   Widget build(BuildContext context) {
-    return  FittedBox(
+    return   FittedBox(
       fit: BoxFit.scaleDown,
       child: Column(
         children: [
@@ -70,6 +71,8 @@ class PreamBodyState extends State<PreamBody> {
               CusPlite(
                 // пятый блок
                 url: "assets/img/wallet.png", text: 'send me BTC ', page: DonatUI(),
+
+         
               ),SizedBox(width: 60, ),
               CusPlite(
                 // шестой блок
@@ -81,9 +84,9 @@ class PreamBodyState extends State<PreamBody> {
           const SizedBox(height: 60, ),
           Row(
             children: const [
-              CusImage(
+              CusPlite(
                 // седбмой блок
-                url: "assets/img/chat.png", text: 'comment', urlsite: '',
+                url: "assets/img/chat.png", text: 'comment', page: CommentWidget(),
               ),SizedBox(width: 60, ),
               CusPlite(
                 // восьмой блок

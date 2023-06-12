@@ -1,4 +1,6 @@
 // ignore: depend_on_referenced_packages
+// ignore_for_file: library_private_types_in_public_api, depend_on_referenced_packages, duplicate_ignore
+
 import 'package:flutter/material.dart';
 import 'package:pr1/common/constants/app_colors.dart';
 import 'package:pr1/common/usr_function/function.dart';
@@ -128,7 +130,7 @@ class MySliverAppBar extends SliverPersistentHeaderDelegate {
                     fontFamily: 'Sensal',
                     color: AppColors.white,
                     fontWeight: FontWeight.w700,
-                  ), //TODO меняй потом на конструктор или нет, хз
+                  ),
                   "This site create server developer, plz, don`t hate it project ",
                   textAlign: TextAlign.left,
                 ),
