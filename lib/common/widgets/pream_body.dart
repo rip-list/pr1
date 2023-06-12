@@ -62,7 +62,7 @@ class PreamBodyState extends State<PreamBody> {
           const SizedBox(height: 60, ),
           // второй ряд
           Row(
-            children: const [
+            children:  const [
               CusImage(
                 // четвёртый блок
                 url: "assets/img/send.png", text: 'TG link', urlsite: "https://t.me/user_i3wm",
@@ -86,8 +86,8 @@ class PreamBodyState extends State<PreamBody> {
             children: const [
               CusPlite(
                 // седбмой блок
-                url: "assets/img/chat.png", text: 'comment', page: CommentWidget(),
-              ),SizedBox(width: 60, ),
+                url: "assets/img/chat.png", text: 'comment', page: CommentWedget()),
+              SizedBox(width: 60, ),
               CusPlite(
                 // восьмой блок
                 url: "assets/img/spotify.png", text: 'my music', page: Spotify(),

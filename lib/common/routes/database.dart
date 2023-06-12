@@ -2,8 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-
-Future<String?> sendDataToServer(String nickname, String description) async {
+Future<String?> postDataToServer(String nickname, String description) async {
   var url = Uri.parse('http://localhost/local_db.php');
 
   var response = await http.post(url, body: {
@@ -16,13 +15,11 @@ Future<String?> sendDataToServer(String nickname, String description) async {
     print('Ответ от сервера: ${response.body}');
     return response.body;
   } else {
-    print('Ошибка при отправке данных на сервер');
-    print('Статус код: ${response.statusCode}');
-    print('Текст ошибки: ${response.body}');
+    print('code: ${response.statusCode}');
+    print('error code  ${response.body}');
     return null;
   }
 }
-
 Future<String> getnicknameDataFromServer(String nickname) async {
   var url = Uri.parse(
       'http://localhost/local_db.php?nickname=$nickname'); // Обновленный URL с параметром id

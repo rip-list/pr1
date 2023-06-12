@@ -27,7 +27,7 @@ class DonatUI extends StatelessWidget {
           child: Center(
             
             child:  HtmlWidget(
-              '<iframe src="https://nowpayments.io/embeds/donation-widget?api_key=7WDT95C-R6MM6DZ-J3W1EYK-XMJTW3J&source=lk_donation&medium=referral" frameborder="0" scrolling="no" style="overflow-y: hidden;" width="354" height="680"></iframe>',
+              '<iframe src="https://nowpayments.io/embeds/donation-widget?api_key=7WDT95C-R6MM6DZ-J3W1EYK-XMJTW3J&source=lk_donation&medium=referral" frameborder="0" scrolling="no" style="overflow-y: hidden;" width="800" height="800"></iframe>',
               factoryBuilder: () => MyWidgetFactory(),
               
             ),
@@ -38,4 +38,4 @@ class DonatUI extends StatelessWidget {
   }
 }
 class MyWidgetFactory extends WidgetFactory with WebViewFactory {}
->>>>>>> f028c5c8705ef5982a642c7459343a3d82c32677
+

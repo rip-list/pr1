@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Комментарии</title>
+  <script>
+    // Функция для выполнения AJAX-запроса и получения комментариев
+    function getComments() {
+      var xhr = new XMLHttpRequest();
+      xhr.onreadystatechange = function() {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+          var comments = JSON.parse(xhr.responseText);
+          displayComments(comments);
+        }
+      };
+      xhr.open("GET", "local_db.php", true); // Замените на путь к вашему серверному скрипту
+      xhr.send();
+    }
+
+    // Функция для отображения комментариев на странице
+    function displayComments(comments) {
+      var commentsContainer = document.getElementById("comments-container");
+      commentsContainer.innerHTML = "";
+
+      for (var i = 0; i < comments.length; i++) {
+        var comment = comments[i];
+        var commentElement = document.createElement("div");
+        commentElement.innerHTML = "<strong>Nickname:</strong> " + comment.nickname + "<br>" +
+                                   "<strong>Description:</strong> " + comment.description + "<br><br>";
+        commentsContainer.appendChild(commentElement);
+      }
+    }
+  </script>
+</head>
+<body onload="getComments()">
+  <h1>Комментарии</h1>
+  <div id="comments-container"></div>
+</body>
+</html>

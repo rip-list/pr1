@@ -81,7 +81,7 @@ const SizedBox(
             child: ElevatedButton(
               onPressed: () async {
                 // вставка значения в бд
-                sendDataToServer(teNickname.text, teDescription.text);
+                postDataToServer(teNickname.text, teDescription.text);
                 // ignore: avoid_print
                 teDescription.clear();
                 teNickname.clear();
