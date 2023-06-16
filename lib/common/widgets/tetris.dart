@@ -13,10 +13,10 @@ class TetrisGame extends StatefulWidget {
 }
 
 class TetrisGameState extends State<TetrisGame> {
-  final int rows = 10;
+  final int rows = 20;
   final int columns = 5;
   List<List<Color?>> gameGrid = List.generate(
-    10,
+    20,
     (index) => List<Color?>.filled(5, null),
   );
 
