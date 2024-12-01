@@ -13,24 +13,23 @@ dependencies:
   build_runner: any
   url_launcher: ^6.0.0
   flutter_web_auth: any
-  spotify_sdk: ^2.0.0
+  spotify_sdk: 2.3.1
   flutter_widget_from_html_core: any
   fwfh_webview: ^0.7.0
-
-
+  
 
   
+
 dev_dependencies:
   idb_sqflite: any
   build_web_compilers: any
-  
+  test: ^1.25.1
 
 
   flutter_web_plugins:
     sdk: flutter
     
-  flutter_test:
-    sdk: flutter
+  
  
   flutter_lints: ^2.0.0
 

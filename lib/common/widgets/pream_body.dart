@@ -23,7 +23,8 @@ class PreamBody extends StatefulWidget {
 class PreamBodyState extends State<PreamBody> {
   @override
   void initState() {
-    // TODO БЛЯТЬ: основное дело проделать надо тут
+    // TODO БЛЯТЬ: 
+    //основное дело проделать надо тут
     // короче, блоки у нас основное Column->Row->AlertDialog->CusImg;
     // вроде так, но хз,
     // 9 блоков
@@ -34,14 +35,14 @@ class PreamBodyState extends State<PreamBody> {
 
   @override
   Widget build(BuildContext context) {
-    return   FittedBox(
+    return   const FittedBox(
       fit: BoxFit.scaleDown,
       child: Column(
         children: [
-          const SizedBox(height: 100, ),
+          SizedBox(height: 100, ),
           // первый ряд
           Row(
-            children:  const [
+            children:  [
              CusImage(
                 text: "GitHub",
                 //  первый блок линк на гитхаб
@@ -59,10 +60,10 @@ class PreamBodyState extends State<PreamBody> {
               ),
             ],
           ),
-          const SizedBox(height: 60, ),
+          SizedBox(height: 60, ),
           // второй ряд
           Row(
-            children:  const [
+            children:  [
               CusImage(
                 // четвёртый блок
                 url: "assets/img/send.png", text: 'TG link', urlsite: "https://t.me/user_i3wm",
@@ -81,9 +82,9 @@ class PreamBodyState extends State<PreamBody> {
             ],
           ),
           // третий ряд
-          const SizedBox(height: 60, ),
+          SizedBox(height: 60, ),
           Row(
-            children: const [
+            children: [
               CusPlite(
                 // седбмой блок
                 url: "assets/img/chat.png", text: 'comment', page: CommentWedget()),
@@ -99,8 +100,8 @@ class PreamBodyState extends State<PreamBody> {
               ),
             ],
           ),
-          const SizedBox(width: 100, ),
-          const CommentMsg(),
+          SizedBox(width: 100, ),
+          CommentMsg(),
           
         ],
       ),

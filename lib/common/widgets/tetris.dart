@@ -1,4 +1,4 @@
-// ignore_for_file: depend_on_referenced_packages
+// ignore_for_file: depend_on_referenced_packages, deprecated_member_use, duplicate_ignore
 
 import 'dart:async';
 import 'dart:math';
@@ -49,11 +49,13 @@ class TetrisGameState extends State<TetrisGame> {
     setState(() {
       gameGrid[currentBlockPosition.y][currentBlockPosition.x] = null;
       if (currentBlockPosition.y + 1 < rows) {
-        currentBlockPosition = Point<int>(currentBlockPosition.x, currentBlockPosition.y + 1);
+        currentBlockPosition =
+            Point<int>(currentBlockPosition.x, currentBlockPosition.y + 1);
       } else {
         currentBlockPosition = Point<int>(currentBlockPosition.x, 0);
       }
-      gameGrid[currentBlockPosition.y][currentBlockPosition.x] = currentBlockColor;
+      gameGrid[currentBlockPosition.y][currentBlockPosition.x] =
+          currentBlockColor;
     });
   }
 
@@ -61,8 +63,10 @@ class TetrisGameState extends State<TetrisGame> {
     setState(() {
       if (currentBlockPosition.x - 1 >= 0) {
         gameGrid[currentBlockPosition.y][currentBlockPosition.x] = null;
-        currentBlockPosition = Point<int>(currentBlockPosition.x - 1, currentBlockPosition.y);
-        gameGrid[currentBlockPosition.y][currentBlockPosition.x] = currentBlockColor;
+        currentBlockPosition =
+            Point<int>(currentBlockPosition.x - 1, currentBlockPosition.y);
+        gameGrid[currentBlockPosition.y][currentBlockPosition.x] =
+            currentBlockColor;
       }
     });
   }
@@ -71,13 +75,17 @@ class TetrisGameState extends State<TetrisGame> {
     setState(() {
       if (currentBlockPosition.x + 1 < columns) {
         gameGrid[currentBlockPosition.y][currentBlockPosition.x] = null;
-        currentBlockPosition = Point<int>(currentBlockPosition.x + 1, currentBlockPosition.y);
-        gameGrid[currentBlockPosition.y][currentBlockPosition.x] = currentBlockColor;
+        currentBlockPosition =
+            Point<int>(currentBlockPosition.x + 1, currentBlockPosition.y);
+        gameGrid[currentBlockPosition.y][currentBlockPosition.x] =
+            currentBlockColor;
       }
     });
   }
 
+  // ignore: deprecated_member_use
   void _handleKey(RawKeyEvent event) {
+    // ignore: deprecated_member_use
     if (event is RawKeyDownEvent) {
       if (event.logicalKey == LogicalKeyboardKey.arrowDown) {
         _moveBlockDown();
